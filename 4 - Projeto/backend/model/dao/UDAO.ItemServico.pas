@@ -28,7 +28,7 @@ uses
 
 constructor TDAOItemServico.Create;
 begin
-  FTabela := 'itemservico';
+  FTabela := 'item_servico';
 end;
 
 function TDAOItemServico.ObterRegistros: TJSONArray;

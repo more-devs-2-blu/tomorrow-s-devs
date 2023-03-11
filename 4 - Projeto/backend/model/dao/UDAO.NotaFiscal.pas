@@ -31,7 +31,7 @@ uses
 
 constructor TDAONotaFiscal.Create;
 begin
-  FTabela := 'notafiscal';
+  FTabela := 'nota';
 end;
 
 

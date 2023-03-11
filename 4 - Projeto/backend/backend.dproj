@@ -153,6 +153,8 @@
         <DCCReference Include="model\entities\UEntity.Prestador.pas"/>
         <DCCReference Include="model\entities\UEntity.Servico.pas"/>
         <DCCReference Include="model\utils\UUtils.JSON.pas"/>
+        <DCCReference Include="model\controllers\UController.ItemServico.pas"/>
+        <DCCReference Include="model\dao\UDAO.ItemServico.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

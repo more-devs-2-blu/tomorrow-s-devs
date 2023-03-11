@@ -27,7 +27,9 @@ uses
   UEntity.Nota in 'model\entities\UEntity.Nota.pas',
   UEntity.Prestador in 'model\entities\UEntity.Prestador.pas',
   UEntity.Servico in 'model\entities\UEntity.Servico.pas',
-  UUtils.JSON in 'model\utils\UUtils.JSON.pas';
+  UUtils.JSON in 'model\utils\UUtils.JSON.pas',
+  UController.ItemServico in 'model\controllers\UController.ItemServico.pas',
+  UDAO.ItemServico in 'model\dao\UDAO.ItemServico.pas';
 
 procedure Registry;
 begin
@@ -45,6 +47,12 @@ begin
     .Get('/servico/:id', TControllerServico.Get)
     .Post('/servico', TControllerServico.Post)
     .Delete('/servico/:id', TControllerServico.Delete);
+
+   THorse.Group.Prefix('v1')
+    .Get('/itensservicos', TControllerItemServico.Gets)
+    .Get('/itemservico/:id', TControllerItemServico.Get)
+    .Post('/itemservico', TControllerItemServico.Post)
+    .Delete('/itemservico/:id', TControllerItemServico.Delete);
 
   THorse.Group.Prefix('v1')
     .Get('/notasfiscais', TControllerNotaFiscal.Gets)
