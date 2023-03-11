@@ -26,7 +26,8 @@ uses
   UEntity.ItemServico in 'model\entities\UEntity.ItemServico.pas',
   UEntity.Nota in 'model\entities\UEntity.Nota.pas',
   UEntity.Prestador in 'model\entities\UEntity.Prestador.pas',
-  UEntity.Servico in 'model\entities\UEntity.Servico.pas';
+  UEntity.Servico in 'model\entities\UEntity.Servico.pas',
+  UUtils.JSON in 'model\utils\UUtils.JSON.pas';
 
 procedure Registry;
 begin
