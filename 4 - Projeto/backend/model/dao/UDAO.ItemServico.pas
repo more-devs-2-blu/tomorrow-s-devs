@@ -10,6 +10,7 @@ type
   TDAOItemServico = class(TDAOBase)
   private
     function ProcurarServicoPorId  (const aId: Integer): TJSONObject;
+    function ProcurarNotaPorId  (const aId: Integer): TJSONObject;
   public
     Constructor Create;
     function ObterRegistros: TJSONArray; override;
@@ -22,7 +23,8 @@ implementation
 uses
   System.SysUtils,
   UDAO.Intf,
-  UDAO.Servico;
+  UDAO.Servico,
+  UDAO.NotaFiscal;
 
 { TDAOItemServico }
 
@@ -36,7 +38,7 @@ var
   xJSONArray, xJSONArrayAux: TJSONArray;
   xJSONObject: TJSONObject;
   I: Integer;
-  xIdServico, xIdPrestador, xIdCliente: Integer;
+  xIdServico, xIdNota: Integer;
 begin
   xJSONArray := inherited;
 
@@ -54,17 +56,33 @@ begin
     xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
     xJSONObject.RemovePair('idservico');
 
+    xIdServico := StrToInt(xJSONObject.GetValue('idnota').Value);
+    xJSONObject.AddPair('nota', Self.ProcurarNotaPorId(xIdNota));
+    xJSONObject.RemovePair('idnota');
+
     xJSONArrayAux.AddElement(xJSONObject);
   end;
   FreeAndNil(xJSONArray);
   Result := xJSONArrayAux;
 end;
 
+function TDAOItemServico.ProcurarNotaPorId(const aId: Integer): TJSONObject;
+var
+  xDAO: IDAO;
+begin
+  xDAO := TDAONotaFiscal.Create;
+  try
+    Result := xDAO.ProcurarPorId(aId);
+  finally
+    xDAO := nil;
+  end;
+end;
+
 function TDAOItemServico.ProcurarPorId(
   const aIdentificador: Integer): TJSONObject;
 var
   xJSONObject: TJSONObject;
-  xIdServico, xIdPrestador, xIdCliente: Integer;
+  xIdServico, xIdNota: Integer;
 begin
   xJSONObject := inherited;
 
@@ -74,6 +92,10 @@ begin
     xIdServico := StrToInt(xJSONObject.GetValue('idservico').Value);
     xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
     xJSONObject.RemovePair('idservico');
+
+    xIdServico := StrToInt(xJSONObject.GetValue('idnota').Value);
+    xJSONObject.AddPair('nota', Self.ProcurarNotaPorId(xIdNota));
+    xJSONObject.RemovePair('idnota');
 
   Result := xJSONObject;
 end;
