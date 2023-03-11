@@ -13,7 +13,7 @@ type
 
 implementation
 
-{ TDAOPecas }
+{ TDAOCliente }
 
 constructor TDAOCliente.Create;
 begin

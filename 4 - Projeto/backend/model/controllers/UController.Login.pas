@@ -6,8 +6,8 @@ uses
   Horse,
   JOSE.Core.JWT,
   JOSE.Core.Builder,
-  UController.Base,
-  UEntity.Logins;
+//  UEntity.Logins,
+  UController.Base;
 
 type
   TControllerLogin = class(TControllerBase)

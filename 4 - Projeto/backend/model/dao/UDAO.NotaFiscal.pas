@@ -9,7 +9,6 @@ uses
 type
   TDAONotaFiscal = class(TDAOBase)
   private
-    function ProcurarServicoPorId  (const aId: Integer): TJSONObject;
     function ProcurarClientePorId  (const aId: Integer): TJSONObject;
     function ProcurarPrestadorPorId(const aId: Integer): TJSONObject;
   public
@@ -17,12 +16,10 @@ type
     function ObterRegistros: TJSONArray; override;
     function ProcurarPorId(const aIdentificador: Integer): TJSONObject;
       override;
-
   end;
 
 implementation
 
-{ TDAOItemServico }
 uses
   System.SysUtils,
   UDAO.Intf,
@@ -30,22 +27,13 @@ uses
   UDAO.Cliente,
   UDAO.Prestador;
 
+{ TDAOItemServico }
+
 constructor TDAONotaFiscal.Create;
 begin
   FTabela := 'notafiscal';
 end;
 
-function TDAONotaFiscal.ProcurarServicoPorId(const aId: Integer): TJSONObject;
-var
-  xDAO: IDAO;
-begin
-  xDAO := TDAOServico.Create;
-  try
-    Result := xDAO.ProcurarPorId(aId);
-  finally
-    xDAO := nil;
-  end;
-end;
 
 function TDAONotaFiscal.ObterRegistros: TJSONArray;
 var
@@ -65,10 +53,6 @@ begin
   begin
     xJSONObject := TJSONObject.ParseJSONValue
       (TEncoding.ASCII.GetBytes(xJSONArray[I].ToJSON), 0) as TJSONObject;
-
-    xIdServico := StrToInt(xJSONObject.GetValue('idservico').Value);
-    xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
-    xJSONObject.RemovePair('idservico');
 
     xIdPrestador := StrToInt(xJSONObject.GetValue('idprestador').Value);
     xJSONObject.AddPair('prestador', Self.ProcurarPrestadorPorId(xIdPrestador));
@@ -107,10 +91,6 @@ begin
 
   if xJSONObject.Count = 0 then
     Exit(xJSONObject);
-
-    xIdServico := StrToInt(xJSONObject.GetValue('idservico').Value);
-    xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
-    xJSONObject.RemovePair('idservico');
 
     xIdPrestador := StrToInt(xJSONObject.GetValue('idprestador').Value);
     xJSONObject.AddPair('prestador', Self.ProcurarPrestadorPorId(xIdPrestador));

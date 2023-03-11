@@ -13,7 +13,7 @@ type
 
 implementation
 
-{ TDAOTeams }
+{ TDAOServico }
 
 constructor TDAOServico.Create;
 begin
