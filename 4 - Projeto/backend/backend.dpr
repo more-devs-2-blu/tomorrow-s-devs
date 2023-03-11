@@ -21,7 +21,12 @@ uses
   UController.Servico in 'model\controllers\UController.Servico.pas',
   UController.Prestador in 'model\controllers\UController.Prestador.pas',
   UDAO.Prestador in 'model\dao\UDAO.Prestador.pas',
-  UController.NotaFiscal in 'model\controllers\UController.NotaFiscal.pas';
+  UController.NotaFiscal in 'model\controllers\UController.NotaFiscal.pas',
+  UEntity.Cliente in 'model\entities\UEntity.Cliente.pas',
+  UEntity.ItemServico in 'model\entities\UEntity.ItemServico.pas',
+  UEntity.Nota in 'model\entities\UEntity.Nota.pas',
+  UEntity.Prestador in 'model\entities\UEntity.Prestador.pas',
+  UEntity.Servico in 'model\entities\UEntity.Servico.pas';
 
 procedure Registry;
 begin

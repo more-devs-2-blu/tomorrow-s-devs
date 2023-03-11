@@ -147,6 +147,11 @@
         <DCCReference Include="model\controllers\UController.Prestador.pas"/>
         <DCCReference Include="model\dao\UDAO.Prestador.pas"/>
         <DCCReference Include="model\controllers\UController.NotaFiscal.pas"/>
+        <DCCReference Include="model\entities\UEntity.Cliente.pas"/>
+        <DCCReference Include="model\entities\UEntity.ItemServico.pas"/>
+        <DCCReference Include="model\entities\UEntity.Nota.pas"/>
+        <DCCReference Include="model\entities\UEntity.Prestador.pas"/>
+        <DCCReference Include="model\entities\UEntity.Servico.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
