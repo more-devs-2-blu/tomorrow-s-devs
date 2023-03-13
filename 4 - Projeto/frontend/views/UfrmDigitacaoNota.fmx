@@ -1,0 +1,177 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 661
+  ClientWidth = 326
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Top
+    Size.Width = 326.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label1: TLabel
+      Align = Client
+      StyledSettings = [Style, FontColor]
+      Size.Width = 326.000000000000000000
+      Size.Height = 73.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 30.000000000000000000
+      TextSettings.HorzAlign = Center
+      Text = 'Digitar NFS-e'
+      TabOrder = 0
+    end
+  end
+  object Layout2: TLayout
+    Align = Client
+    Size.Width = 326.000000000000000000
+    Size.Height = 588.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object lyt_nome_fantasia: TLayout
+      Align = Top
+      Size.Width = 326.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object Label2: TLabel
+        Align = Top
+        StyledSettings = [Style, FontColor]
+        Margins.Left = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 316.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'Nome Fantasia'
+        TabOrder = 0
+      end
+      object Rectangle1: TRectangle
+        Align = Center
+        Size.Width = 310.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 15.000000000000000000
+        YRadius = 15.000000000000000000
+        object Edit1: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Position.X = 10.000000000000000000
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Size.Width = 290.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object lyt_cnpj: TLayout
+      Align = Top
+      Position.Y = 65.000000000000000000
+      Size.Width = 326.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Label3: TLabel
+        Align = Top
+        StyledSettings = [Style, FontColor]
+        Margins.Left = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 316.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'CNPJ'
+        TabOrder = 0
+      end
+      object Rectangle2: TRectangle
+        Align = Center
+        Size.Width = 310.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 15.000000000000000000
+        YRadius = 15.000000000000000000
+        object Edit2: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Position.X = 10.000000000000000000
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Size.Width = 290.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object Layout3: TLayout
+      Align = Top
+      Position.Y = 130.000000000000000000
+      Size.Width = 326.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Label4: TLabel
+        Align = Top
+        StyledSettings = [Style, FontColor]
+        Margins.Left = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 316.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'Municipio Presta'#231#227'o'
+        TabOrder = 0
+      end
+      object Rectangle3: TRectangle
+        Align = Center
+        Size.Width = 310.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 15.000000000000000000
+        YRadius = 15.000000000000000000
+        object Edit3: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          StyleLookup = 'transparentedit'
+          TabOrder = 0
+          Position.X = 10.000000000000000000
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Size.Width = 290.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object lyt_itens: TLayout
+      Align = Client
+      Size.Width = 326.000000000000000000
+      Size.Height = 393.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object Label5: TLabel
+        Align = Top
+        StyledSettings = [Style, FontColor]
+        Margins.Left = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 316.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'Itens'
+        TabOrder = 0
+      end
+    end
+  end
+end
