@@ -12,6 +12,7 @@ type
     public
       class procedure Gets(Req: THorseRequest; Res: THorseResponse; Next: TProc); override;
       class procedure Get(Req: THorseRequest; Res: THorseResponse; Next: TProc); override;
+      class procedure GetCompleto(Req: THorseRequest; Res: THorseResponse; Next: TProc);
       class procedure Post(Req: THorseRequest; Res: THorseResponse; Next: TProc); override;
       class procedure Delete(Req: THorseRequest; Res: THorseResponse; Next: TProc); override;
   end;
@@ -32,6 +33,13 @@ begin
 end;
 
 class procedure TControllerNotaFiscal.Get(Req: THorseRequest;
+  Res: THorseResponse; Next: TProc);
+begin
+  FDAO := TDAONotaFiscal.Create;
+  inherited;
+end;
+
+class procedure TControllerNotaFiscal.GetCompleto(Req: THorseRequest;
   Res: THorseResponse; Next: TProc);
 begin
   FDAO := TDAONotaFiscal.Create;

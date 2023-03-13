@@ -14,6 +14,7 @@ type
     public
       function ObterRegistros: TJSONArray; virtual;
       function ProcurarPorId(const aIdentificador: Integer): TJSONObject; virtual;
+      function ProcurarPorIdCompleto(const aIdentificador: Integer): TJSONObject; virtual;
       function AdicionarRegistro(aRegistro: TJSONObject): Boolean;
       function DeletarRegistro(const aIdentificador: Integer): Boolean;
     end;
@@ -82,6 +83,12 @@ begin
     on e: Exception do
       raise Exception.Create('Erro ao Obter Registros: ' + e.Message);
   end;
+end;
+
+function TDAOBase.ProcurarPorIdCompleto(
+  const aIdentificador: Integer): TJSONObject;
+begin
+  Self.ProcurarPorId(aIdentificador);
 end;
 
 end.

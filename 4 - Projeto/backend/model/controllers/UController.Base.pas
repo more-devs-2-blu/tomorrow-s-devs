@@ -13,6 +13,7 @@ type
     public
       class procedure Gets(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
       class procedure Get(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
+      class procedure GetCompleto(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
       class procedure Post(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
       class procedure Delete(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
   end;
@@ -57,6 +58,22 @@ begin
   xId := StrToIntDef(Req.Params.Items['id'], 0);
 
   Res.Send<TJSONObject>(FDAO.ProcurarPorId(xId));
+end;
+
+class procedure TControllerBase.GetCompleto(Req: THorseRequest;
+  Res: THorseResponse; Next: TProc);
+var
+  xId: Integer;
+begin
+  if (Req.Params.Count <> 1) or (not(Req.Params.ContainsKey('id'))) then
+  begin
+    Res.Status(THTTPStatus.BadRequest);
+    Exit;
+  end;
+
+  xId := StrToIntDef(Req.Params.Items['id'], 0);
+
+  Res.Send<TJSONObject>(FDAO.ProcurarPorIdCompleto(xId));
 end;
 
 class procedure TControllerBase.Gets(Req: THorseRequest;

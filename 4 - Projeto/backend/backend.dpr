@@ -45,6 +45,7 @@ begin
   THorse.Group.Prefix('v1')
     .Get('/servicos', TControllerServico.Gets)
     .Get('/servico/:id', TControllerServico.Get)
+
     .Post('/servico', TControllerServico.Post)
     .Delete('/servico/:id', TControllerServico.Delete);
 
@@ -57,6 +58,7 @@ begin
   THorse.Group.Prefix('v1')
     .Get('/notasfiscais', TControllerNotaFiscal.Gets)
     .Get('/notafiscal/:id', TControllerNotaFiscal.Get)
+    .Get('/notafiscalcompleta/:id', TControllerNotaFiscal.GetCompleto)
     .Post('/notafiscal', TControllerNotaFiscal.Post)
     .Delete('/notafiscal/:id', TControllerNotaFiscal.Delete);
 

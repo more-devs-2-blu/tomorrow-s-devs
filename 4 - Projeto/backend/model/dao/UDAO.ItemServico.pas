@@ -56,7 +56,7 @@ begin
     xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
     xJSONObject.RemovePair('idservico');
 
-    xIdServico := StrToInt(xJSONObject.GetValue('idnota').Value);
+    xIdNota := StrToInt(xJSONObject.GetValue('idnota').Value);
     xJSONObject.AddPair('nota', Self.ProcurarNotaPorId(xIdNota));
     xJSONObject.RemovePair('idnota');
 
@@ -93,7 +93,7 @@ begin
     xJSONObject.AddPair('servico', Self.ProcurarServicoPorId(xIdServico));
     xJSONObject.RemovePair('idservico');
 
-    xIdServico := StrToInt(xJSONObject.GetValue('idnota').Value);
+    xIdNota := StrToInt(xJSONObject.GetValue('idnota').Value);
     xJSONObject.AddPair('nota', Self.ProcurarNotaPorId(xIdNota));
     xJSONObject.RemovePair('idnota');
 

@@ -7,13 +7,13 @@ uses
 
 type
   TDAOPrestador = class(TDAOBase)
-  public
-    constructor Create;
+    public
+      constructor Create;
   end;
 
 implementation
 
-{ TDAOPecas }
+{ TDAOPrestador }
 
 constructor TDAOPrestador.Create;
 begin
