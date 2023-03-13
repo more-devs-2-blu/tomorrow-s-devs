@@ -66,21 +66,21 @@ ALTER TABLE ITEM_SERVICO ADD FOREIGN KEY(IDNOTA) REFERENCES NOTA (ID);
 ALTER TABLE NOTA ADD FOREIGN KEY(IDCLIENTE) REFERENCES CLIENTE (ID);
 ALTER TABLE NOTA ADD FOREIGN KEY(IDPRESTADOR) REFERENCES PRESTADOR (ID);
 
-INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '12345678901234', 'Razão', 'Nome Fantasia', 'Logradouro', 'Bairro', 'Complemento', '123','Cidade', '1', 'J', 'Incrição');
-INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '12345678901235', 'Razão', 'Nome Fantasia','Logradouro', 'Bairro', 'Complemento', '123','Cidade', '1', 'J', 'Incrição');
-INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '12345678901236', 'Razão', 'Nome Fantasia','Logradouro', 'Bairro', 'Complemento', '123','Cidade', '1', 'J', 'Incrição');
+INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '80680093000181', 'Junior Sistemas ME', 'Junior Sistemas', 'R. Rio de Janeiro', 'Konder Victor', '', '1318', '8147', '1', 'J', '');
+INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '04475530000147', 'Empresa Desmonstracao Ltda', '','Avenida 7 de Setembro', 'Centro', 'Sala 01', '966', '8117', '1', 'J', '');
+INSERT INTO `TOMORROWS_DB`.`CLIENTE` VALUES (DEFAULT, 'cliente@teste.com', '00000000000191', 'Empresa Cliente Ltda', '', 'Rua da Capivara', 'Capivarianos', 'Terreo', '123','8055', '1', 'J', '');
 
-INSERT INTO `TOMORROWS_DB`.`PRESTADOR` VALUES (DEFAULT, '12345678901234', 'Cidade');
+INSERT INTO `TOMORROWS_DB`.`PRESTADOR` VALUES (DEFAULT, '25825307000152', '8357');
 INSERT INTO `TOMORROWS_DB`.`PRESTADOR` VALUES (DEFAULT, '12345678901235', 'Cidade');
 INSERT INTO `TOMORROWS_DB`.`PRESTADOR` VALUES (DEFAULT, '12345678901236', 'Cidade');
 
-INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '11.2', 'Status', 'Chave Indentificador', NOW(),'1', '1');
-INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '11.2', 'Status', 'Chave Indentificador', NOW(),'2', '2');
-INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '11.2', 'Status', 'Chave Indentificador', NOW(),'3', '3');
+INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '350.00', 'Status', 'Chave Indentificador', NOW(),'1', '1');
+INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '400.00', 'Status', 'Chave Indentificador', NOW(),'2', '1');
+INSERT INTO `TOMORROWS_DB`.`NOTA` VALUES (DEFAULT, '1500.00', 'Status', 'Chave Indentificador', NOW(),'3', '1');
 
-INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Descrição', 'Cod', '4.2', '1', 'Local', 'S', '8.2');
-INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Descrição', 'Cod', '4.2', '1', 'Local', 'S', '8.2');
-INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Descrição', 'Cod', '4.2', '1', 'Local', 'S', '8.2');
+INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Execucao, por administracao, empreitada ou subempreitada, de obras de construcao civil, hidraulica ou elétrica e de outras obras semelhantes.', '702', '5.00', '0', '8357', 'S', '35.00');
+INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Instalacao e montagem de aparelhos, maquinas e equipamentos, inclusive montagem industrial, prestados ao usuario final, exclusivamente com material por ele fornecido.', '1406', '3.00', '0', '8357', 'S', '20.00');
+INSERT INTO `TOMORROWS_DB`.`SERVICO` VALUES (DEFAULT, 'Franquia (franchising)', '1708', '2.00', '0', '8357', 'S', '50.00');
 
 INSERT INTO `TOMORROWS_DB`.`ITEM_SERVICO` VALUES (DEFAULT, '10', '1', '1');
 INSERT INTO `TOMORROWS_DB`.`ITEM_SERVICO` VALUES (DEFAULT, '20', '2', '2');
