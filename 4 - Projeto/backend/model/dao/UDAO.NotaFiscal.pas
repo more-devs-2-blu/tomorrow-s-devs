@@ -17,7 +17,7 @@ type
     function ObterRegistros: TJSONArray; override;
     function ProcurarPorId(const aIdentificador: Integer): TJSONObject;
       override;
-    function ProcurarPorIdCompleto(const aIdentificador: Integer): TJSONObject;
+    function ProcurarPorIdCompleto(const aIdentificador: Integer): TJSONObject; override;
     function ObterServicosDaNota(const aIdNota: Integer): TJSONArray;
   end;
 
@@ -66,7 +66,7 @@ begin
       xJSONArrayAux.AddElement(xJSONObjectAux);
     end;
   xJSONObject.AddPair(TJSONPair.Create('Servicos', xJSONArrayAux));
-  FreeAndNil(xJSONArray);
+  result := xJSONObject;
 end;
 
 function TDAONotaFiscal.ObterRegistros: TJSONArray;

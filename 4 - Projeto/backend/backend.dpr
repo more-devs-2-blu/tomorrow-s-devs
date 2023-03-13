@@ -29,7 +29,8 @@ uses
   UEntity.Servico in 'model\entities\UEntity.Servico.pas',
   UUtils.JSON in 'model\utils\UUtils.JSON.pas',
   UController.ItemServico in 'model\controllers\UController.ItemServico.pas',
-  UDAO.ItemServico in 'model\dao\UDAO.ItemServico.pas';
+  UDAO.ItemServico in 'model\dao\UDAO.ItemServico.pas',
+  UUtils.XML in 'model\utils\UUtils.XML.pas';
 
 procedure Registry;
 begin
@@ -50,17 +51,17 @@ begin
     .Delete('/servico/:id', TControllerServico.Delete);
 
    THorse.Group.Prefix('v1')
-    .Get('/itensservicos', TControllerItemServico.Gets)
-    .Get('/itemservico/:id', TControllerItemServico.Get)
-    .Post('/itemservico', TControllerItemServico.Post)
-    .Delete('/itemservico/:id', TControllerItemServico.Delete);
+    .Get('/itensServicos', TControllerItemServico.Gets)
+    .Get('/itemServico/:id', TControllerItemServico.Get)
+    .Post('/itemServico', TControllerItemServico.Post)
+    .Delete('/itemServico/:id', TControllerItemServico.Delete);
 
   THorse.Group.Prefix('v1')
-    .Get('/notasfiscais', TControllerNotaFiscal.Gets)
-    .Get('/notafiscal/:id', TControllerNotaFiscal.Get)
-    .Get('/notafiscalcompleta/:id', TControllerNotaFiscal.GetCompleto)
-    .Post('/notafiscal', TControllerNotaFiscal.Post)
-    .Delete('/notafiscal/:id', TControllerNotaFiscal.Delete);
+    .Get('/notasFiscais', TControllerNotaFiscal.Gets)
+    .Get('/notaFiscal/:id', TControllerNotaFiscal.Get)
+    .Get('/notaFiscalcompleta/:id', TControllerNotaFiscal.GetCompleto)
+    .Post('/notaFiscal', TControllerNotaFiscal.Post)
+    .Delete('/notaFiscal/:id', TControllerNotaFiscal.Delete);
 
   THorse.Group.Prefix('v1')
     .Get('/prestadores', TControllerPrestador.Gets)

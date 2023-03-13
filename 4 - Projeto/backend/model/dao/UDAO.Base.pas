@@ -88,7 +88,7 @@ end;
 function TDAOBase.ProcurarPorIdCompleto(
   const aIdentificador: Integer): TJSONObject;
 begin
-  Self.ProcurarPorId(aIdentificador);
+  Self.ProcurarPorIdCompleto(aIdentificador);
 end;
 
 end.

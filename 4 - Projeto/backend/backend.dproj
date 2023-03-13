@@ -155,6 +155,7 @@
         <DCCReference Include="model\utils\UUtils.JSON.pas"/>
         <DCCReference Include="model\controllers\UController.ItemServico.pas"/>
         <DCCReference Include="model\dao\UDAO.ItemServico.pas"/>
+        <DCCReference Include="model\utils\UUtils.XML.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
