@@ -269,6 +269,39 @@
             <Form>Form1</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="model\services\UService.Base.pas"/>
+        <DCCReference Include="model\services\UService.Cliente.pas"/>
+        <DCCReference Include="model\services\UService.Intf.pas"/>
+        <DCCReference Include="model\services\UService.ItemServico.pas"/>
+        <DCCReference Include="model\services\UService.NotaFiscal.pas"/>
+        <DCCReference Include="model\services\UService.Prestador.pas"/>
+        <DCCReference Include="model\services\UService.Servico.pas"/>
+        <DCCReference Include="model\utils\UUtils.Constants.pas"/>
+        <DCCReference Include="model\utils\UUtils.Functions.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Base.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Cliente.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.ItemServico.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Login.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.NotaFiscal.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Prestador.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Servico.pas"/>
+        <DCCReference Include="..\backend\model\controllers\UController.Usuario.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Base.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Cliente.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Intf.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.ItemServico.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.NotaFiscal.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Prestador.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Servico.pas"/>
+        <DCCReference Include="..\backend\model\dao\UDAO.Usuario.pas"/>
+        <DCCReference Include="..\backend\model\entities\UEntity.Cliente.pas"/>
+        <DCCReference Include="..\backend\model\entities\UEntity.ItemServico.pas"/>
+        <DCCReference Include="..\backend\model\entities\UEntity.Nota.pas"/>
+        <DCCReference Include="..\backend\model\entities\UEntity.Prestador.pas"/>
+        <DCCReference Include="..\backend\model\entities\UEntity.Servico.pas"/>
+        <DCCReference Include="..\backend\model\utils\UUtil.Banco.pas"/>
+        <DCCReference Include="..\backend\model\utils\UUtils.JSON.pas"/>
+        <DCCReference Include="..\backend\model\utils\UUtils.XML.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -303,15 +336,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Debug" Class="Android_LauncherIcon72">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
+                <DeployFile LocalName="Win32\Debug\FrontEnd_TomorrowsDevs.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FrontEnd_TomorrowsDevs.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Debug\libFrontEnd_TomorrowsDevs.so" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Debug" Class="Android_LauncherIcon72">
                     <Platform Name="Android">
-                        <RemoteName>libFrontEnd_TomorrowsDevs.so</RemoteName>
+                        <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -330,12 +363,6 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Debug" Class="Android_SplashImage426">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\FrontEnd_TomorrowsDevs.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>FrontEnd_TomorrowsDevs.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -436,6 +463,12 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Debug" Class="Android_LauncherIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Android\Debug\libFrontEnd_TomorrowsDevs.so" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteName>libFrontEnd_TomorrowsDevs.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1236,10 +1269,8 @@
             <Platforms>
                 <Platform value="Android">True</Platform>
                 <Platform value="Android64">True</Platform>
-                <Platform value="iOSDevice32">False</Platform>
                 <Platform value="iOSDevice64">True</Platform>
                 <Platform value="iOSSimulator">True</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="OSX64">True</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
