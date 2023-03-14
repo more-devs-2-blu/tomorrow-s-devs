@@ -241,6 +241,8 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -264,10 +266,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="views\UfrmPrincipal.pas">
-            <Form>Form1</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
         <DCCReference Include="model\services\UService.Base.pas"/>
         <DCCReference Include="model\services\UService.Cliente.pas"/>
         <DCCReference Include="model\services\UService.Intf.pas"/>
@@ -295,12 +293,28 @@
         <DCCReference Include="..\backend\model\dao\UDAO.Usuario.pas"/>
         <DCCReference Include="..\backend\model\utils\UUtil.Banco.pas"/>
         <DCCReference Include="..\backend\model\utils\UUtils.JSON.pas"/>
-        <DCCReference Include="..\backend\model\utils\UUtils.XML.pas"/>
         <DCCReference Include="..\backend\model\entities\UEntity.ItemServico.pas"/>
         <DCCReference Include="..\backend\model\entities\UEntity.Nota.pas"/>
         <DCCReference Include="..\backend\model\entities\UEntity.Servico.pas"/>
         <DCCReference Include="..\backend\model\entities\UEntity.Cliente.pas"/>
         <DCCReference Include="..\backend\model\entities\UEntity.Prestador.pas"/>
+        <DCCReference Include="views\UfrmAutorizacaoCancelamentoNotas.pas">
+            <Form>frmNotas</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="views\UfrmCriarCopiar.pas">
+            <Form>frmCriarCopia</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="views\UfrmDigitacaoNota.pas">
+            <Form>frmDigitacaoNota</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="views\UfrmPrincipal.pas">
+            <Form>Form1</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\backend\model\utils\UUtils.XML.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -321,6 +335,13 @@
                 <Source>
                     <Source Name="MainSource">FrontEnd_TomorrowsDevs.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k270.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp270.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\FastReports\LibD27\dclfrxtee27.bpl">FastReport 6.0 Tee Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Debug" Class="Android_NotificationIcon72">
