@@ -40,7 +40,7 @@ uses
   UUtils.Constants,
   DataSet.Serialize,
   FireDAC.Comp.Client,
-  UUtils.Functions;
+  UUtils.Functions, JOSE.Types.JSON, UUtils.XML;
 
 { TServiceNotaFiscal }
 
@@ -67,7 +67,7 @@ end;
 procedure TServiceNotaFiscal.Excluir;
 begin
   if (not Assigned(FNota)) or (FNota.Id = 0) then
-    raise Exception.Create('Nenhum Orçamento foi escolhido para exclusão.');
+    raise Exception.Create('Nenhuma Nota foi escolhida para exclusão.');
 
   try
     FRESTClient.BaseURL := Format(URL_BASE_NOTAS_FISCAIS + '/%d', [FNota.Id]);
@@ -121,7 +121,23 @@ end;
 function TServiceNotaFiscal.ObterRegistro(const aId: Integer): TObject;
 begin
   Result := nil;
-  //
+  try
+    FRESTClient.BaseURL := Format(URL_BASE_NOTA_FISCAL + 'Completa/%d',[aId]);
+    FRESTRequest.Method := rmGet;
+    FRESTRequest.Execute;
+
+    case FRESTResponse.StatusCode of
+      API_CRIADO:
+        Exit;
+      API_NAO_AUTORIZADO:
+        raise Exception.Create('Usuário não autorizado.');
+    else
+      raise Exception.Create('Erro não catalogado.');
+    end;
+  except
+    on e: Exception do
+      raise Exception.Create(e.Message);
+  end;
 end;
 
 procedure TServiceNotaFiscal.PreencherNotas(const aJsonNotas: String);
@@ -130,16 +146,44 @@ begin
 end;
 
 procedure TServiceNotaFiscal.Registrar;
+var
+  xJSONObject: TJSONObject;
 begin
   try
-    FRESTClient.BaseURL := URL_BASE_NOTAS_FISCAIS;
+    FRESTClient.BaseURL := URL_BASE_NOTA_FISCAL;
     FRESTRequest.Params.AddBody(FNota.JSON);
     FRESTRequest.Method := rmPost;
     FRESTRequest.Execute;
 
     case FRESTResponse.StatusCode of
       API_CRIADO:
-        Exit;
+        begin
+          xJSONObject := TJSONObject.Create;
+          try
+            xJSONObject := TJSONObject.ParseJSONValue
+              (TEncoding.ASCII.GetBytes(FRESTResponse.Content), 0) as TJSONObject;
+            xJSONObject := TJSONObject(ObterRegistro(
+              (xJSONObject.GetValue('id').Value.ToInteger)));
+
+            if not FileExists('arquivo.xml')then
+              begin
+                TXMLUtil.MontaArquivoXML;
+              end;
+
+            // Copular XML
+
+            FRESTClient.BaseURL := URL_ENVIAR_NOTA_PREFEITURA;
+            FRESTRequest.Params.AddItem;
+            FRESTRequest.Params.Items[0].name  := 'EnvioDeNota';
+            FRESTRequest.Params.Items[0].Value := 'arquivo.xml';
+            FRESTRequest.Params.Items[0].ContentType := ctMULTIPART_FORM_DATA;
+            FRESTRequest.Params.Items[0].Kind  := TRESTRequestParameterKind.pkFILE;
+            FRESTRequest.Method := rmPost;
+            FRESTRequest.Execute;
+          finally
+            FreeAndNil(xJSONObject);
+          end;
+        end;
       API_NAO_AUTORIZADO:
         raise Exception.Create('Usuário não autorizado.');
     else

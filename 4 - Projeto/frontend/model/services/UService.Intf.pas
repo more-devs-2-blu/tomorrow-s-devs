@@ -4,7 +4,6 @@ interface
 
 type
   IService = interface
-    procedure CarregarToken;
     procedure Registrar;
     procedure Listar;
     procedure Excluir;

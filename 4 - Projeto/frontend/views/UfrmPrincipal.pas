@@ -25,8 +25,10 @@ type
     Image3: TImage;
     Label4: TLabel;
     Image4: TImage;
+    procedure Rectangle1Click(Sender: TObject);
   private
     { Private declarations }
+    procedure TelaCriarCopia;
   public
     { Public declarations }
   end;
@@ -36,6 +38,24 @@ var
 
 implementation
 
+uses
+  UfrmCriarCopiar;
+
 {$R *.fmx}
+
+procedure TForm1.Rectangle1Click(Sender: TObject);
+begin
+  Self.TelaCriarCopia;
+end;
+
+procedure TForm1.TelaCriarCopia;
+begin
+   if not(Assigned(frmCriarCopia)) then
+    frmCriarCopia := TfrmCriarCopia.Create(Application);
+
+  frmCriarCopia.Show;
+  Application.MainForm := frmCriarCopia;
+  Self.Close;
+end;
 
 end.

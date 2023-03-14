@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
 
 type
-  TForm4 = class(TForm)
+  TfrmCriarCopia = class(TForm)
     Layout1: TLayout;
     Label1: TLabel;
     Layout2: TLayout;
@@ -36,17 +36,54 @@ type
     Image6: TImage;
     Label8: TLabel;
     Image5: TImage;
+    procedure rect_autorizarClick(Sender: TObject);
+    procedure rect_cancelarClick(Sender: TObject);
   private
     { Private declarations }
+    procedure TelaDigitacao;
+    procedure TelaNotas;
   public
     { Public declarations }
   end;
 
 var
-  Form4: TForm4;
+  frmCriarCopia: TfrmCriarCopia;
 
 implementation
 
+uses
+  UfrmDigitacaoNota, UfrmAutorizacaoCancelamentoNotas;
+
 {$R *.fmx}
+
+procedure TfrmCriarCopia.rect_autorizarClick(Sender: TObject);
+begin
+  Self.TelaDigitacao;
+end;
+
+procedure TfrmCriarCopia.rect_cancelarClick(Sender: TObject);
+begin
+  Self.TelaNotas;
+end;
+
+procedure TfrmCriarCopia.TelaDigitacao;
+begin
+  if not(Assigned(frmDigitacaoNota)) then
+    frmDigitacaoNota := TfrmDigitacaoNota.Create(Application);
+
+  frmDigitacaoNota.Show;
+  Application.MainForm := frmDigitacaoNota;
+  Self.Close;
+end;
+
+procedure TfrmCriarCopia.TelaNotas;
+begin
+  if not(Assigned(frmNotas)) then
+    frmNotas := TfrmNotas.Create(Application);
+
+  frmNotas.Show;
+  Application.MainForm := frmNotas;
+  Self.Close;
+end;
 
 end.

@@ -105,8 +105,7 @@ begin
 
           while not xMemTable.Eof do
           begin
-            FServicos.Add(TServico.Create(xMemTable.FieldByName('id').AsInteger,
-            xMemTable.FieldByName('descricao').AsString));
+            FServicos.Add(TServico.Create(xMemTable.FieldByName('id').AsInteger));
             xMemTable.Next;
           end;
         end;

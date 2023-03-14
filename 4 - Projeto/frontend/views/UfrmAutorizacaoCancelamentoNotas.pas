@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
 
 type
-  TForm3 = class(TForm)
+  TfrmNotas = class(TForm)
     Layout1: TLayout;
     Label1: TLabel;
     Layout2: TLayout;
@@ -26,15 +26,34 @@ type
     Image4: TImage;
   private
     { Private declarations }
+    procedure ListarNotas;
   public
     { Public declarations }
   end;
 
 var
-  Form3: TForm3;
+  frmNotas: TfrmNotas;
 
 implementation
 
+uses
+  UService.Intf, UEntity.Nota, UService.NotaFiscal;
+
 {$R *.fmx}
+
+{ TfrmNotas }
+
+procedure TfrmNotas.ListarNotas;
+var
+  xServiceNota: IService;
+  xNota: TNota;
+begin
+
+  xServiceNota := TServiceNotaFiscal.Create;
+  xServiceNota.Listar;
+  for xNota in TServiceNotaFiscal(xServiceNota). do
+    Self.PrepararlistView(xNota);
+
+end;
 
 end.

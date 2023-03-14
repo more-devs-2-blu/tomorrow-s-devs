@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Edit, FMX.Objects;
 
 type
-  TForm2 = class(TForm)
+  TfrmDigitacaoNota = class(TForm)
     Layout1: TLayout;
     Label1: TLabel;
     Layout2: TLayout;
@@ -43,7 +43,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  frmDigitacaoNota: TfrmDigitacaoNota;
 
 implementation
 

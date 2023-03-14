@@ -8,13 +8,11 @@ uses
 type
   TServiceBase = class(TInterfacedObject, IService)
     private
-      FToken : String;
+
     protected
       FRESTClient: TRESTClient;
       FRESTRequest: TRESTRequest;
       FRESTResponse: TRESTResponse;
-
-    procedure CarregarToken;
 
     procedure Registrar; virtual; abstract;
     procedure Listar; virtual; abstract;
@@ -33,36 +31,9 @@ uses
 
 { TServiceBase }
 
-procedure TServiceBase.CarregarToken;
-var
-  xMeuArquivo: THandle;
-  xStringList: TStringList;
-const
-  NOME_ARQUIVO = 'Token.jwt';
-begin
-  FToken        := EmptyStr;
-  xStringList   := TStringList.Create;
-  try
-    if not(FileExists(NOME_ARQUIVO)) then
-    begin
-      xMeuArquivo := FileCreate(NOME_ARQUIVO);
-      if (xMeuArquivo <> INVALID_HANDLE_VALUE) then
-        FileClose(xMeuArquivo);
-    end;
-
-    xStringList.LoadFromFile(NOME_ARQUIVO);
-
-    if (xStringList.Count > 0) then
-      FToken := xStringList[0];
-  finally
-    xStringList.Free;
-  end;
-
-end;
 
 constructor TServiceBase.Create;
 begin
-  Self.CarregarToken;
 
   FRESTClient   := TRESTClient.Create(nil);
   FRESTRequest  := TRESTRequest.Create(nil);

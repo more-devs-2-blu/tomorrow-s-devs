@@ -3,7 +3,6 @@ program FrontEnd_TomorrowsDevs;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  UfrmPrincipal in 'views\UfrmPrincipal.pas' {Form1},
   UService.Base in 'model\services\UService.Base.pas',
   UService.Cliente in 'model\services\UService.Cliente.pas',
   UService.Intf in 'model\services\UService.Intf.pas',
@@ -31,17 +30,24 @@ uses
   UDAO.Usuario in '..\backend\model\dao\UDAO.Usuario.pas',
   UUtil.Banco in '..\backend\model\utils\UUtil.Banco.pas',
   UUtils.JSON in '..\backend\model\utils\UUtils.JSON.pas',
-  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
   UEntity.ItemServico in '..\backend\model\entities\UEntity.ItemServico.pas',
   UEntity.Nota in '..\backend\model\entities\UEntity.Nota.pas',
   UEntity.Servico in '..\backend\model\entities\UEntity.Servico.pas',
   UEntity.Cliente in '..\backend\model\entities\UEntity.Cliente.pas',
-  UEntity.Prestador in '..\backend\model\entities\UEntity.Prestador.pas';
+  UEntity.Prestador in '..\backend\model\entities\UEntity.Prestador.pas',
+  UfrmAutorizacaoCancelamentoNotas in 'views\UfrmAutorizacaoCancelamentoNotas.pas' {frmNotas},
+  UfrmCriarCopiar in 'views\UfrmCriarCopiar.pas' {frmCriarCopia},
+  UfrmDigitacaoNota in 'views\UfrmDigitacaoNota.pas' {frmDigitacaoNota},
+  UfrmPrincipal in 'views\UfrmPrincipal.pas' {Form1},
+  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmNotas, frmNotas);
+  Application.CreateForm(TfrmDigitacaoNota, frmDigitacaoNota);
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
