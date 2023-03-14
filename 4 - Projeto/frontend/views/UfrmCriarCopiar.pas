@@ -1,16 +1,16 @@
-unit UfrmPrincipal;
+unit UfrmCriarCopiar;
 
 interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
 
 type
-  TForm1 = class(TForm)
-    Label1: TLabel;
+  TForm4 = class(TForm)
     Layout1: TLayout;
+    Label1: TLabel;
     Layout2: TLayout;
     lyt_digitar_nfse: TLayout;
     Rectangle1: TRectangle;
@@ -24,7 +24,18 @@ type
     Rectangle3: TRectangle;
     Image3: TImage;
     Label4: TLabel;
+    Rectangle4: TRectangle;
+    Layout3: TLayout;
+    Rectangle6: TRectangle;
+    Label6: TLabel;
+    Layout5: TLayout;
+    rect_autorizar: TRectangle;
     Image4: TImage;
+    Label5: TLabel;
+    rect_cancelar: TRectangle;
+    Image6: TImage;
+    Label8: TLabel;
+    Image5: TImage;
   private
     { Private declarations }
   public
@@ -32,7 +43,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Form4: TForm4;
 
 implementation
 

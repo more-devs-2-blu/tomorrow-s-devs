@@ -26,6 +26,16 @@ type
     Edit3: TEdit;
     lyt_itens: TLayout;
     Label5: TLabel;
+    Layout4: TLayout;
+    Image1: TImage;
+    Layout5: TLayout;
+    rect_encerrar: TRectangle;
+    Image2: TImage;
+    Label6: TLabel;
+    rect_excluir: TRectangle;
+    Image3: TImage;
+    Label7: TLabel;
+    Image4: TImage;
   private
     { Private declarations }
   public
