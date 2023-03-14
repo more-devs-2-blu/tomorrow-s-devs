@@ -35,6 +35,7 @@ type
     procedure SetValorTotal(const Value: Currency);
   public
     Constructor Create; overload;
+    Constructor Create(aId : Integer); overload;
     Constructor Create(aId : Integer; aDataEmissao : TDate; avalorTotal : Currency;
      aStatus, aChaveIdentificador : String; aCliente : TCliente; aPrestador : TPrestador); overload;
     Destructor Destroy; override;
@@ -72,6 +73,12 @@ begin
   FValorTotal := aValorTotal;
   FCliente := aCliente;
   FPrestador := aPrestador;
+end;
+
+constructor TNota.Create(aId: Integer);
+begin
+  FId := aId;
+  Self.Create;
 end;
 
 destructor TNota.Destroy;

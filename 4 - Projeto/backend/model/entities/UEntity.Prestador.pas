@@ -21,6 +21,7 @@ type
     procedure SetId(const Value: Integer);
   public
     constructor Create; overload;
+    Constructor Create(aId : Integer); overload;
     constructor Create(aId : Integer; aCNPJ, aCidadePrestador : String); overload;
     destructor Destroy; override;
 
@@ -47,6 +48,13 @@ begin
   FId := aId;
   FCNPJ := aCNPJ;
   FCidadePrestador := aCidadePrestador;
+  Self.Create;
+end;
+
+constructor TPrestador.Create(aId: Integer);
+begin
+  FId := aId;
+  Self.Create;
 end;
 
 destructor TPrestador.Destroy;

@@ -26,6 +26,7 @@ type
     procedure SetServico(const Value: TServico);
   public
     Constructor Create; overload;
+    Constructor Create(aId : Integer); overload;
     Constructor Create(aId, aQuantidadeServicos : Integer; aNota : TNota; aServico : TServico); overload;
     Destructor Destroy; override;
 
@@ -56,6 +57,12 @@ end;
 constructor TItemServico.Create;
 begin
   FJSON := TJSONObject.Create;
+end;
+
+constructor TItemServico.Create(aId: Integer);
+begin
+  FId := aId;
+  Self.Create;
 end;
 
 destructor TItemServico.Destroy;

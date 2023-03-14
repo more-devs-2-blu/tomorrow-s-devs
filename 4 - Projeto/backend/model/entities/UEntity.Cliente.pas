@@ -19,7 +19,7 @@ type
     FNumero : Integer;
     FCidade : String;
     FEnderecoInformado : String;
-    FTipoCliente : Char;
+    FTipoCliente : String;
     FInscricaoEstadual : String;
     FJSON : TJSONObject;
 
@@ -36,7 +36,7 @@ type
     function GetNomeFantasia: String;
     function GetNumero: Integer;
     function GetRazaoSocial: String;
-    function GetTipoCliente: Char;
+    function GetTipoCliente: String;
 
     procedure SetBairro(const Value: String);
     procedure SetCidade(const Value: String);
@@ -50,12 +50,13 @@ type
     procedure SetNomeFantasia(const Value: String);
     procedure SetNumero(const Value: Integer);
     procedure SetRazaoSocial(const Value: String);
-    procedure SetTipoCliente(const Value: Char);
+    procedure SetTipoCliente(const Value: String);
   public
     Constructor Create; overload;
+    Constructor Create(aId : Integer); overload;
     Constructor Create(aId, aNumero : Integer; aRazaoSocial, aEmail, aCnpj, aNomeFantasia,
     aLogradouro, aBairro, aComplemento, aCidade, aEnderecoinformado, aInscricaoEstadual : String;
-    aTipoCliente : Char); overload;
+    aTipoCliente : String); overload;
     destructor Destroy; override;
 
     property Id : Integer read GetId write SetId;
@@ -69,7 +70,7 @@ type
     property Numero : Integer read GetNumero write SetNumero;
     property Cidade : String read GetCidade write SetCidade;
     property EnderecoInformado : String read GetEnderecoInformado write SetEnderecoInformado;
-    property TipoCliente : Char read GetTipoCliente write SetTipoCliente;
+    property TipoCliente : String read GetTipoCliente write SetTipoCliente;
     property InscricaoEstadual : String read GetInscricaoEstadual write SetInscricaoEstadual;
     property JSON : TJSONObject read GetJSON;
   end;
@@ -83,7 +84,7 @@ uses
 
 constructor TCliente.Create(aId, aNumero: Integer; aRazaoSocial, aEmail, aCnpj,
   aNomeFantasia, aLogradouro, aBairro, aComplemento, aCidade,
-  aEnderecoinformado, aInscricaoEstadual: String; aTipoCliente: Char);
+  aEnderecoinformado, aInscricaoEstadual: String; aTipoCliente: String);
 begin
     FId := aId;
     FRazaoSocial := aRazaoSocial;
@@ -105,6 +106,12 @@ end;
 constructor TCliente.Create;
 begin
   FJSON := TJSONObject.Create;
+end;
+
+constructor TCliente.Create(aId: Integer);
+begin
+  FId := aId;
+  Self.Create;
 end;
 
 destructor TCliente.Destroy;
@@ -178,7 +185,7 @@ begin
   Result := FRazaoSocial;
 end;
 
-function TCliente.GetTipoCliente: Char;
+function TCliente.GetTipoCliente: String;
 begin
   Result := FTipoCliente;
 end;
@@ -243,7 +250,7 @@ begin
   FRazaoSocial := value;
 end;
 
-procedure TCliente.SetTipoCliente(const Value: Char);
+procedure TCliente.SetTipoCliente(const Value: String);
 begin
   FTipoCliente := value;
 end;

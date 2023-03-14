@@ -29,14 +29,14 @@ uses
   UDAO.Prestador in '..\backend\model\dao\UDAO.Prestador.pas',
   UDAO.Servico in '..\backend\model\dao\UDAO.Servico.pas',
   UDAO.Usuario in '..\backend\model\dao\UDAO.Usuario.pas',
-  UEntity.Cliente in '..\backend\model\entities\UEntity.Cliente.pas',
-  UEntity.ItemServico in '..\backend\model\entities\UEntity.ItemServico.pas',
-  UEntity.Nota in '..\backend\model\entities\UEntity.Nota.pas',
-  UEntity.Prestador in '..\backend\model\entities\UEntity.Prestador.pas',
-  UEntity.Servico in '..\backend\model\entities\UEntity.Servico.pas',
   UUtil.Banco in '..\backend\model\utils\UUtil.Banco.pas',
   UUtils.JSON in '..\backend\model\utils\UUtils.JSON.pas',
-  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas';
+  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
+  UEntity.ItemServico in '..\backend\model\entities\UEntity.ItemServico.pas',
+  UEntity.Nota in '..\backend\model\entities\UEntity.Nota.pas',
+  UEntity.Servico in '..\backend\model\entities\UEntity.Servico.pas',
+  UEntity.Cliente in '..\backend\model\entities\UEntity.Cliente.pas',
+  UEntity.Prestador in '..\backend\model\entities\UEntity.Prestador.pas';
 
 {$R *.res}
 

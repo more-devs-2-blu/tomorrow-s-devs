@@ -136,7 +136,7 @@ procedure TServiceItemServico.PreencherItemServicos(const aJsonServicos
   var
  xMemTable: TFDMemTable;
   xServico: TServico;
-  xStatus: Byte;
+  xNota : TNota;
 begin
   FItemServicos.Clear;
 
@@ -147,17 +147,17 @@ begin
 
     while not xMemTable.Eof do
     begin
-      Self.CarregarServicos(xMemTable.FieldByName('SERVICO').AsString,
+      Self.CarregarServicos(xMemTable.FieldByName('servico').AsString,
                          xServico);
+
+      Self.CarregarNota(xMemTable.FieldByName('nota').AsString, xNota);
 
 
       FItemServicos.Add(TItemServico.Create(
-        xMemTable.FieldByName('ID').AsInteger,
-        xMemTable.FieldByName('QUANTIDADE').AsInteger,
-        xServico,
-        xMemTable.FieldByName('result_Team_A').AsInteger,
-        xMemTable.FieldByName('result_Team_B').AsInteger,
- ));
+        xMemTable.FieldByName('id').AsInteger,
+        xMemTable.FieldByName('quantidade').AsInteger,
+        xNota, xServico
+         ));
 
       xMemTable.Next;
     end;
@@ -183,20 +183,21 @@ begin
 
     if xMemTable.RecordCount > 0 then    begin
 
-      aCliente := TCliente.Create(
+     aCliente := TCliente.Create(
         xMemTable.FieldByName('id').AsInteger,
+        xMemTable.FieldByName('numero').AsInteger,
+        xMemTable.FieldByName('razaoSocial').AsString,
         xMemTable.FieldByName('email').AsString,
         xMemTable.FieldByName('cnpj').AsString,
-        xMemTable.FieldByName('razaoSocial').AsFloat,
         xMemTable.FieldByName('nomeFantasia').AsString,
         xMemTable.FieldByName('logradouro').AsString,
         xMemTable.FieldByName('bairro').AsString,
         xMemTable.FieldByName('complemento').AsString,
-        xMemTable.FieldByName('numero').AsInteger,
         xMemTable.FieldByName('cidade').AsString,
         xMemTable.FieldByName('endInformado').AsString,
-        xMemTable.FieldByName('tipoCliente').AsString,
-        xMemTable.FieldByName('inscEstadual').AsString);
+        xMemTable.FieldByName('inscEstadual').AsString,
+        xMemTable.FieldByName('tipoCliente').AsString
+        );
     end;
   finally
     FreeAndNil(xMemTable);
@@ -209,7 +210,8 @@ procedure TServiceItemServico.CarregarNota(const aJsonNota: String;
 var
   xMemTable: TFDMemTable;
   xMemTableTeam: TFDMemTable;
-  xStatus: Byte;
+  xPrestador : TPrestador;
+  xCliente : TCliente;
 begin
   aNota        := nil;
   xMemTable     := TFDMemTable.Create(nil);
@@ -218,16 +220,23 @@ begin
   try
     xMemTable.LoadFromJSON(aJsonNota);
 
-    if xMemTable.RecordCount > 0 then    begin
+    if xMemTable.RecordCount > 0 then
+    begin
 
-      aNota := TServico.Create(
+    Self.CarregarPrestador(xMemTable.FieldByName('prestador').AsString,
+                         xPrestador);
+
+    Self.CarregarCliente(xMemTable.FieldByName('cliente').AsString,
+                         xCliente);
+
+      aNota := TNota.Create(
         xMemTable.FieldByName('id').AsInteger,
-        xMemTable.FieldByName('valorTotal').AsString,
-        xMemTable.FieldByName('statusNota').AsInteger,
-        xMemTable.FieldByName('chaveIndentificador').AsFloat,
-        xMemTable.FieldByName('dataEmissao').AsInteger,
-        xMemTable.FieldByName('idCliente').AsString,
-        xMemTable.FieldByName('idPrestador').AsString);
+        xMemTable.FieldByName('dataEmissao').AsDateTime,
+        xMemTable.FieldByName('valorTotal').AsCurrency,
+        xMemTable.FieldByName('statusNota').AsString,
+        xMemTable.FieldByName('chaveIndentificador').AsString,
+        xCliente,
+        xPrestador);
     end;
   finally
     FreeAndNil(xMemTable);
@@ -237,8 +246,28 @@ end;
 
 procedure TServiceItemServico.CarregarPrestador(const aJsonPrestador: String;
   var aPrestador: TPrestador);
+  var
+  xMemTable: TFDMemTable;
+  xMemTableTeam: TFDMemTable;
 begin
+  aPrestador        := nil;
+  xMemTable     := TFDMemTable.Create(nil);
+  xMemTableTeam := TFDMemTable.Create(nil);
 
+  try
+    xMemTable.LoadFromJSON(aJsonPrestador);
+
+    if xMemTable.RecordCount > 0 then
+    begin
+     aPrestador := TPrestador.Create(
+        xMemTable.FieldByName('id').AsInteger,
+        xMemTable.FieldByName('cnpj').AsString,
+        xMemTable.FieldByName('cidade').AsString);
+    end;
+  finally
+    FreeAndNil(xMemTable);
+    FreeAndNil(xMemTableTeam);
+  end;
 end;
 
 procedure TServiceItemServico.CarregarServicos(const aJsonServico: String; var aServico : TServico);
@@ -258,13 +287,13 @@ begin
 
       aServico := TServico.Create(
         xMemTable.FieldByName('id').AsInteger,
-        xMemTable.FieldByName('descricao').AsString,
         xMemTable.FieldByName('codigo').AsInteger,
-        xMemTable.FieldByName('aliquota').AsFloat,
         xMemTable.FieldByName('situacaoTributaria').AsInteger,
+        xMemTable.FieldByName('descricao').AsString,
         xMemTable.FieldByName('localPrestacao').AsString,
         xMemTable.FieldByName('tributacaoMunicipal').AsString,
-        xMemTable.FieldByName('valorUnitario').AsCurrency);
+        xMemTable.FieldByName('valorUnitario').AsCurrency,
+        xMemTable.FieldByName('aliquota').AsFloat);
     end;
   finally
     FreeAndNil(xMemTable);
