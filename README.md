@@ -1,6 +1,5 @@
-# tomorrow-s-devs
-Desafio A: Como facilitar a digitação e gestão de NFS-es
 <h1>Seja bem vindo ao nosso projeto!</h1>
+<h2>Escolhemos o desafio A: Como facilitar a digitação e gestão de NFS-es</h2>
 <ul>
   <li>Na pasta Mockup você pode encontrar nossos protótipos de tela</li>
   <li>Na pasta Modelagem de Dados você vai poder encontrar nossas Modelagens Lógica e Conceitual do banco de dados</li>
