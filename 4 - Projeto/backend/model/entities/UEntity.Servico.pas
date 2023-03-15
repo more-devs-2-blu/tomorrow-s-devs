@@ -10,7 +10,7 @@ type
   private
     FId: Integer;
     FDescricaoServico: String;
-    FCod_Servico : Integer;
+    FCod_Servico : String;
     FAliquotaServico : Double;
     FSituacao_Tributaria : Integer;
     FLocal_Prest_Servico : String;
@@ -19,7 +19,7 @@ type
     FJSON : TJSONObject;
 
     function GetAliquotaServico: Double;
-    function GetCodServico: Integer;
+    function GetCodServico: String;
     function GetDescricaoServico: String;
     function GetId: Integer;
     function GetLocalPrestacaoServico: String;
@@ -29,7 +29,7 @@ type
     function GetValorUnitario: Currency;
 
     procedure SetAliquotaServico(const Value: Double);
-    procedure SetCodServico(const Value: Integer);
+    procedure SetCodServico(const Value: String);
     procedure SetDescricaoServico(const Value: String);
     procedure SetId(const Value: Integer);
     procedure SetLocalPrestacaoServico(const Value: String);
@@ -39,14 +39,17 @@ type
   public
     Constructor Create; overload;
     Constructor Create(aId : Integer); overload;
-    Constructor Create(aId, aCodServico, aSituacaoTributaria: Integer;
-    aDescricao, aLocalPrest : String; aTribMunPrestado : String; aValor : Currency
+    Constructor Create(aId,  aSituacaoTributaria: Integer;
+    aDescricao, aLocalPrest : String; aCodServico, aTribMunPrestado : String; aValor : Currency
+    ; aAliquota : Double);overload;
+    Constructor Create( aSituacaoTributaria: Integer;
+    aDescricao, aLocalPrest : String; aCodServico, aTribMunPrestado : String; aValor : Currency
     ; aAliquota : Double);overload;
     destructor Destroy; override;
 
     property Id: Integer read GetId write SetId;
     property DescricaoServico : String read GetDescricaoServico write SetDescricaoServico;
-    property CodServico : Integer read GetCodServico write SetCodServico;
+    property CodServico : String read GetCodServico write SetCodServico;
     property AliquotaServico : Double read GetAliquotaServico write SetAliquotaServico;
     property SituacaoTributaria : Integer read GetSituacaoTributaria write SetSituacaoTributaria;
     property LocalPrestacaoServico : String read GetLocalPrestacaoServico write SetLocalPrestacaoServico;
@@ -62,9 +65,9 @@ uses
 
 { TServico }
 
-constructor TServico.Create(aId, aCodServico,
+constructor TServico.Create(aId,
   aSituacaoTributaria: Integer; aDescricao, aLocalPrest: String;
-  aTribMunPrestado: String; aValor: Currency; aAliquota: Double);
+  aCodServico, aTribMunPrestado: String; aValor: Currency; aAliquota: Double);
 begin
     FId := aId;
     FDescricaoServico := aDescricao;
@@ -89,6 +92,21 @@ begin
   Self.Create;
 end;
 
+constructor TServico.Create(aSituacaoTributaria: Integer; aDescricao,
+  aLocalPrest, aCodServico, aTribMunPrestado: String; aValor: Currency;
+  aAliquota: Double);
+begin
+    FDescricaoServico := aDescricao;
+    FCod_Servico := aCodServico;
+    FAliquotaServico := aAliquota;
+    FSituacao_Tributaria := aSituacaoTributaria;
+    FLocal_Prest_Servico := aLocalPrest;
+    FTrib_mun_Prestado := aTribMunPrestado;
+    FValorUnitario := aValor;
+
+    Self.Create;
+end;
+
 destructor TServico.Destroy;
 begin
   FreeAndNil(FJSON);
@@ -100,8 +118,7 @@ begin
   Result := FAliquotaServico;
 end;
 
-
-function TServico.GetCodServico: Integer;
+function TServico.GetCodServico: String;
 begin
   Result := FCod_Servico;
 end;
@@ -128,6 +145,14 @@ end;
 
 function TServico.GetJSON: TJSONObject;
 begin
+  FJSON.AddPair('descricao', FDescricaoServico);
+  FJSON.AddPair('codigo', FCod_Servico);
+  FJSON.AddPair('aliquota', CurrToStr(FAliquotaServico));
+  FJSON.AddPair('situacao_Tributaria', FSituacao_Tributaria.ToString);
+  FJSON.AddPair('local_Prestacao', FLocal_Prest_Servico);
+  FJSON.AddPair('tributacao_Municipal', FTrib_mun_Prestado);
+  FJSON.AddPair('valor_Unitario', CurrToStr(FValorUnitario));
+
   Result := FJSON;
 end;
 
@@ -146,7 +171,7 @@ begin
   FAliquotaServico := Value;
 end;
 
-procedure TServico.SetCodServico(const Value: Integer);
+procedure TServico.SetCodServico(const Value: String);
 begin
   FCod_Servico := Value;
 end;

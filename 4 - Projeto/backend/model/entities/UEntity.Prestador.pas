@@ -23,6 +23,7 @@ type
     constructor Create; overload;
     Constructor Create(aId : Integer); overload;
     constructor Create(aId : Integer; aCNPJ, aCidadePrestador : String); overload;
+    constructor Create(aCNPJ, aCidadePrestador : String); overload;
     destructor Destroy; override;
 
     property Id : Integer read GetId write SetId;
@@ -80,6 +81,9 @@ end;
 
 function TPrestador.GetJSON: TJSONObject;
 begin
+  FJSON.AddPair('cnpj', FCNPJ);
+  FJSON.AddPair('cidade', FCidadePrestador);
+
   Result := FJSON;
 end;
 
@@ -96,6 +100,13 @@ end;
 procedure TPrestador.SetId(const Value: Integer);
 begin
   FId := Value;
+end;
+
+constructor TPrestador.Create(aCNPJ, aCidadePrestador: String);
+begin
+   FCNPJ := aCNPJ;
+  FCidadePrestador := aCidadePrestador;
+  Self.Create;
 end;
 
 end.

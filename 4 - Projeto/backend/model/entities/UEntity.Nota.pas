@@ -38,6 +38,8 @@ type
     Constructor Create(aId : Integer); overload;
     Constructor Create(aId : Integer; aDataEmissao : TDate; avalorTotal : Currency;
      aStatus, aChaveIdentificador : String; aCliente : TCliente; aPrestador : TPrestador); overload;
+    Constructor Create( aDataEmissao : TDate; avalorTotal : Currency;
+     aStatus, aChaveIdentificador : String; aCliente : TCliente; aPrestador : TPrestador); overload;
     Destructor Destroy; override;
 
     property Id : Integer read GetId write SetId;
@@ -73,11 +75,24 @@ begin
   FValorTotal := aValorTotal;
   FCliente := aCliente;
   FPrestador := aPrestador;
+  Self.Create;
 end;
 
 constructor TNota.Create(aId: Integer);
 begin
   FId := aId;
+  Self.Create;
+end;
+
+constructor TNota.Create(aDataEmissao: TDate; avalorTotal: Currency; aStatus,
+  aChaveIdentificador: String; aCliente: TCliente; aPrestador: TPrestador);
+begin
+  FDataEmissao := aDataEmissao;
+  FChaveIndentificador := aChaveIdentificador;
+  FStatus := aStatus;
+  FValorTotal := aValorTotal;
+  FCliente := aCliente;
+  FPrestador := aPrestador;
   Self.Create;
 end;
 
@@ -111,6 +126,13 @@ end;
 
 function TNota.GetJSON: TJSONObject;
 begin
+  FJSON.AddPair('valor_Total', CurrToStr(FValorTotal));
+  FJSON.AddPair('status_Nota', FStatus);
+  FJSON.AddPair('chave_Identificador', FChaveIndentificador);
+  FJSON.AddPair('data_Emissao', FormatDateTime('yyyy-mm-dd', FDataEmissao));
+  FJSON.AddPair('IdPrestador', FPrestador.Id.ToString);
+  FJSON.AddPair('idCliente', FCliente.Id.ToString);
+
   Result := FJSON;
 end;
 

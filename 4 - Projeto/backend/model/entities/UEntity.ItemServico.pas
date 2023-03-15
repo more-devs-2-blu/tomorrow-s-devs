@@ -28,6 +28,7 @@ type
     Constructor Create; overload;
     Constructor Create(aId : Integer); overload;
     Constructor Create(aId, aQuantidadeServicos : Integer; aNota : TNota; aServico : TServico); overload;
+    Constructor Create(aQuantidadeServicos : Integer; aNota : TNota; aServico : TServico); overload;
     Destructor Destroy; override;
 
     property Id : Integer read GetId write SetId;
@@ -96,6 +97,10 @@ end;
 
 function TItemServico.GetJSON: TJSONObject;
 begin
+  FJSON.AddPair('quantidade', FQuantidadeServicos.ToString);
+  FJSON.AddPair('idNota', FNota.Id.ToString);
+  FJSON.AddPair('idServico', FServico.Id.ToString);
+
   Result := FJSON;
 end;
 
@@ -117,6 +122,15 @@ end;
 procedure TItemServico.SetServico(const Value: TServico);
 begin
   FServico := Value;
+end;
+
+constructor TItemServico.Create(aQuantidadeServicos: Integer; aNota: TNota;
+  aServico: TServico);
+begin
+  FQuantidadeServicos := aQuantidadeServicos;
+  FNota := aNota;
+  FServico := aServico;
+  Self.Create;
 end;
 
 end.

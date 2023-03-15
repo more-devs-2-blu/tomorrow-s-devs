@@ -57,6 +57,9 @@ type
     Constructor Create(aId, aNumero : Integer; aRazaoSocial, aEmail, aCnpj, aNomeFantasia,
     aLogradouro, aBairro, aComplemento, aCidade, aEnderecoinformado, aInscricaoEstadual : String;
     aTipoCliente : String); overload;
+    Constructor Create(aNumero : Integer; aRazaoSocial, aEmail, aCnpj, aNomeFantasia,
+    aLogradouro, aBairro, aComplemento, aCidade, aEnderecoinformado, aInscricaoEstadual : String;
+    aTipoCliente : String); overload;
     destructor Destroy; override;
 
     property Id : Integer read GetId write SetId;
@@ -114,6 +117,26 @@ begin
   Self.Create;
 end;
 
+constructor TCliente.Create(aNumero: Integer; aRazaoSocial, aEmail, aCnpj,
+  aNomeFantasia, aLogradouro, aBairro, aComplemento, aCidade,
+  aEnderecoinformado, aInscricaoEstadual, aTipoCliente: String);
+begin
+    FRazaoSocial := aRazaoSocial;
+    FEmail := aEmail;
+    FCNPJ := aCnpj;
+    FNomeFantasia := aNomeFantasia;
+    FLogradouro := aLogradouro;
+    FBairro := aBairro;
+    FComplemento := aComplemento;
+    FNumero := aNumero;
+    FCidade := aCidade;
+    FEnderecoInformado := aEnderecoinformado;
+    FTipoCliente := aTipoCliente;
+    FInscricaoEstadual := aInscricaoEstadual;
+
+  Self.Create;
+end;
+
 destructor TCliente.Destroy;
 begin
   FreeAndNil(FJSON);
@@ -162,6 +185,19 @@ end;
 
 function TCliente.GetJSON: TJSONObject;
 begin
+  FJSON.AddPair('email', FEmail);
+  FJSON.AddPair('cnpj', FCNPJ);
+  FJSON.AddPair('razao_Social', FRazaoSocial);
+  FJSON.AddPair('nome_Fantasia', FNomeFantasia);
+  FJSON.AddPair('logradouro', FLogradouro);
+  FJSON.AddPair('bairro', FBairro);
+  FJSON.AddPair('complemento', FComplemento);
+  FJSON.AddPair('numero', FNumero.ToString);
+  FJSON.AddPair('cidade', FCidade);
+  FJSON.AddPair('end_Informado', FEnderecoInformado);
+  FJSON.AddPair('tipo_Cliente', FTipoCliente);
+  FJSON.AddPair('insc_Estadual', FInscricaoEstadual);
+
   Result := FJSON;
 end;
 

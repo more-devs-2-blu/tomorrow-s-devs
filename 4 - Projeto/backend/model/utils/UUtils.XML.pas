@@ -78,7 +78,7 @@ begin
 
     while not xMemTableNota.Eof do
       begin
-        FCliente.Create()
+        FCliente.Create();
 
         FNota.Create();
 
@@ -134,8 +134,8 @@ var
   xMemTable :TFDMemtable;
 
 begin
-  xValorTotal.Text         := aJSON.GetValue('valorTotal').ToString;
-  xCnpjPrest.Text          := aJSON.get;
+//  xValorTotal.Text         := aJSON.GetValue('valorTotal').ToString;
+//  xCnpjPrest.Text          := aJSON.get;
   xCidadePrestador.Text    := '';
 
 
