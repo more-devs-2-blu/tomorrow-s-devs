@@ -40,12 +40,12 @@ type
     ComboEdit1: TComboEdit;
     procedure rect_encerrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure ComboEdit1Change(Sender: TObject);
+    procedure rect_excluirClick(Sender: TObject);
   private
     { Private declarations }
-    FClientes : TObjectList<TCliente>;
     procedure registrarNota;
     procedure preencherClientes;
+    function ListarClientes : TList<TCliente>;
   public
     { Public declarations }
   end;
@@ -63,37 +63,38 @@ uses
 {$R *.fmx}
 
 
-procedure TfrmDigitacaoNota.ComboEdit1Change(Sender: TObject);
+procedure TfrmDigitacaoNota.FormCreate(Sender: TObject);
 begin
-  Edit2.Text := FClientes[ComboEdit1.ItemIndex].NomeFantasia;
+  Self.preencherClientes;
 end;
 
-procedure TfrmDigitacaoNota.FormCreate(Sender: TObject);
+function TfrmDigitacaoNota.ListarClientes: TList<TCliente>;
 var
+  xClientes : TList<TCliente>;
   xServiceItemServico: IService;
-  xCliente: TCliente;
   xItemServico : TItemServico;
 begin
-  FClientes := TObjectList<TCliente>.Create;
+  xClientes := TList<TCliente>.Create;
 
   xServiceItemServico := TServiceItemServico.Create;
   xServiceItemServico.Listar;
   for xItemServico in TServiceItemServico(xServiceItemServico).ItemServicos do
   begin
-    xCliente := xItemServico.Nota.Cliente;
-    FClientes.Add(xCliente);
-    Self.preencherClientes;
+    xClientes.Add(xItemServico.Nota.Cliente);
   end;
+  Result := xClientes;
 end;
-
-
 
 procedure TfrmDigitacaoNota.preencherClientes;
 var
+  xClientes : TList<TCliente>;
   I : Integer;
 begin
-  for I := 0 to FClientes.Count-1 do
-    ComboEdit1.Items.Add(FClientes[I].NomeFantasia);
+  xClientes := TList<TCliente>.Create;
+  xClientes := ListarClientes;
+
+  for I := 0 to xClientes.Count-1 do
+    ComboEdit1.Items.Add(xClientes[I].NomeFantasia);
 
     ComboEdit1.ItemIndex := 0;
 end;
@@ -101,6 +102,15 @@ end;
 procedure TfrmDigitacaoNota.rect_encerrarClick(Sender: TObject);
 begin
   Self.registrarNota;
+end;
+
+procedure TfrmDigitacaoNota.rect_excluirClick(Sender: TObject);
+var
+  xClientes : TList<TCliente>;
+begin
+  xClientes := TList<TCliente>.Create;
+  xClientes := ListarClientes;
+  Edit2.Text := xClientes[ComboEdit1.ItemIndex].NomeFantasia;
 end;
 
 procedure TfrmDigitacaoNota.RegistrarNota;
