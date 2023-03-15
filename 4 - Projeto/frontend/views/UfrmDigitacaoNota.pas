@@ -59,7 +59,7 @@ implementation
 uses
   UService.Intf, UEntity.Prestador, UEntity.Nota,
   UService.Cliente, UService.Prestador, UService.NotaFiscal,
-  UEntity.ItemServico, UService.ItemServico;
+  UEntity.ItemServico, UService.ItemServico, UfrmCriarCopiar;
 
 {$R *.fmx}
 

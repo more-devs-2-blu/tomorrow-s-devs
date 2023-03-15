@@ -764,6 +764,7 @@ object frmPrincipal: TfrmPrincipal
               FileName = 'C:\Users\mysql\Desktop\Imagens\seta_financas_icone.png'
             end>
           Align = Left
+          HitTest = False
           Margins.Left = 7.000000000000000000
           Margins.Top = 7.000000000000000000
           Margins.Right = 7.000000000000000000
@@ -875,6 +876,7 @@ object frmPrincipal: TfrmPrincipal
               FileName = 'C:\Users\mysql\Desktop\Imagens\list_view_icone.png'
             end>
           Align = Left
+          HitTest = False
           Margins.Left = 7.000000000000000000
           Margins.Top = 7.000000000000000000
           Margins.Right = 7.000000000000000000

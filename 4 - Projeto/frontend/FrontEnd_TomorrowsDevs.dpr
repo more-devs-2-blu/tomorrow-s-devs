@@ -49,6 +49,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmNotas, frmNotas);
   Application.CreateForm(TfrmDigitacaoNota, frmDigitacaoNota);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmCriarCopia, frmCriarCopia);
   Application.Run;
 end.

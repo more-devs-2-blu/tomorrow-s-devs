@@ -11,6 +11,7 @@ type
   TFraVoltarTela = class(TFrame)
     Rectangle1: TRectangle;
     procedure VoltarTelaPrincipal;
+    procedure Rectangle1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -20,6 +21,11 @@ type
 implementation
 
 {$R *.fmx}
+
+procedure TFraVoltarTela.Rectangle1Click(Sender: TObject);
+begin
+  VoltarTelaPrincipal;
+end;
 
 procedure TFraVoltarTela.VoltarTelaPrincipal;
 var

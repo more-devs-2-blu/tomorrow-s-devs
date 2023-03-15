@@ -201,5 +201,6 @@ object FraVoltarTela: TFraVoltarTela
     Size.Height = 35.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    OnClick = Rectangle1Click
   end
 end

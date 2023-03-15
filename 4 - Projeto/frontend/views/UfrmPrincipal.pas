@@ -45,7 +45,12 @@ uses
 
 procedure TfrmPrincipal.Rectangle1Click(Sender: TObject);
 begin
- // Self.TelaCriarCopia;
+  if not(Assigned(frmCriarCopia)) then
+    frmCriarCopia := TfrmCriarCopia.Create(Application);
+
+  frmCriarCopia.Show;
+  Application.MainForm := frmNotas;
+  Self.Close;
 end;
 
 
