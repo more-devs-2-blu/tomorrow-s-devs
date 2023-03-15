@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, UEntity.Nota,
+  UEntity.Servico;
 
 type
   TfrmNotas = class(TForm)
@@ -24,9 +25,12 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Image4: TImage;
+    procedure rect_autorizarClick(Sender: TObject);
   private
     { Private declarations }
     procedure ListarNotas;
+    procedure ExibirNota(aNota : TNota);
+    procedure ExibirServicos(aServico : TServico);
   public
     { Public declarations }
   end;
@@ -37,23 +41,48 @@ var
 implementation
 
 uses
-  UService.Intf, UEntity.Nota, UService.NotaFiscal;
+  UService.Intf, UService.NotaFiscal, UEntity.ItemServico,
+  UService.ItemServico;
 
 {$R *.fmx}
 
 { TfrmNotas }
 
+procedure TfrmNotas.ExibirNota(aNota : TNota);
+begin
+ Label1.Text := aNota.Id.ToString + ' ' + CurrToStr(aNota.ValorTotal) + ' '+ aNota.Status;
+end;
+
+procedure TfrmNotas.ExibirServicos(aServico: TServico);
+begin
+  Label1.Text := aServico.Id.ToString + ' ' + aServico.DescricaoServico + ' '+ aServico.CodServico;
+end;
+
 procedure TfrmNotas.ListarNotas;
 var
-  xServiceNota: IService;
+  xServiceItemServico: IService;
   xNota: TNota;
+  xServico : TServico;
+  xItemServico : TItemServico;
 begin
 
-  xServiceNota := TServiceNotaFiscal.Create;
-  xServiceNota.Listar;
-  for xNota in TServiceNotaFiscal(xServiceNota). do
-    Self.PrepararlistView(xNota);
+  xServiceItemServico := TServiceItemServico.Create;
+  xServiceItemServico.Listar;
+//  for xItemServico in TServiceItemServico(xServiceItemServico).ItemServicos do
+//  begin
+//    xNota := xItemServico.Nota;
+//    Self.ExibirNota(xNota);
+//  end;
+for xItemServico in TServiceItemServico(xServiceItemServico).ItemServicos do
+  begin
+    xServico := xItemServico.Servico;
+    Self.ExibirServicos(xServico);
+  end;
+end;
 
+procedure TfrmNotas.rect_autorizarClick(Sender: TObject);
+begin
+  Self.ListarNotas;
 end;
 
 end.

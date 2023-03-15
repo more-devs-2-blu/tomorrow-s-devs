@@ -186,17 +186,17 @@ begin
      aCliente := TCliente.Create(
         xMemTable.FieldByName('id').AsInteger,
         xMemTable.FieldByName('numero').AsInteger,
-        xMemTable.FieldByName('razaoSocial').AsString,
+        xMemTable.FieldByName('razao_Social').AsString,
         xMemTable.FieldByName('email').AsString,
         xMemTable.FieldByName('cnpj').AsString,
-        xMemTable.FieldByName('nomeFantasia').AsString,
+        xMemTable.FieldByName('nome_Fantasia').AsString,
         xMemTable.FieldByName('logradouro').AsString,
         xMemTable.FieldByName('bairro').AsString,
         xMemTable.FieldByName('complemento').AsString,
         xMemTable.FieldByName('cidade').AsString,
-        xMemTable.FieldByName('endInformado').AsString,
-        xMemTable.FieldByName('inscEstadual').AsString,
-        xMemTable.FieldByName('tipoCliente').AsString
+        xMemTable.FieldByName('end_Informado').AsString,
+        xMemTable.FieldByName('insc_Estadual').AsString,
+        xMemTable.FieldByName('tipo_Cliente').AsString
         );
     end;
   finally
@@ -231,10 +231,10 @@ begin
 
       aNota := TNota.Create(
         xMemTable.FieldByName('id').AsInteger,
-        xMemTable.FieldByName('dataEmissao').AsDateTime,
-        xMemTable.FieldByName('valorTotal').AsCurrency,
-        xMemTable.FieldByName('statusNota').AsString,
-        xMemTable.FieldByName('chaveIndentificador').AsString,
+        xMemTable.FieldByName('data_Emissao').AsDateTime,
+        xMemTable.FieldByName('valor_Total').AsCurrency,
+        xMemTable.FieldByName('status_Nota').AsString,
+        xMemTable.FieldByName('chave_Identificador').AsString,
         xCliente,
         xPrestador);
     end;
@@ -287,12 +287,12 @@ begin
 
       aServico := TServico.Create(
         xMemTable.FieldByName('id').AsInteger,
-        xMemTable.FieldByName('codigo').AsInteger,
-        xMemTable.FieldByName('situacaoTributaria').AsInteger,
+        xMemTable.FieldByName('situacao_Tributaria').AsInteger,
         xMemTable.FieldByName('descricao').AsString,
-        xMemTable.FieldByName('localPrestacao').AsString,
-        xMemTable.FieldByName('tributacaoMunicipal').AsString,
-        xMemTable.FieldByName('valorUnitario').AsCurrency,
+        xMemTable.FieldByName('local_Prestacao').AsString,
+        xMemTable.FieldByName('codigo').AsString,
+        xMemTable.FieldByName('tributacao_Municipal').AsString,
+        xMemTable.FieldByName('valor_Unitario').AsCurrency,
         xMemTable.FieldByName('aliquota').AsFloat);
     end;
   finally
