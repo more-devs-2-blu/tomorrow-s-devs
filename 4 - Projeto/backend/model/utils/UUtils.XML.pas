@@ -3,22 +3,31 @@ unit UUtils.XML;
 interface
 
 uses
-  xml.XMLDoc, xml.XMLIntf, xml.xmldom;
+  xml.XMLDoc, xml.XMLIntf, xml.xmldom, System.JSON, UEntity.Nota,
+  UEntity.Cliente, UEntity.ItemServico, UEntity.Prestador, UEntity.Servico,
+  DataSet.Serialize;
 
 type
   TXMLUtil = class
-    XMLDocument1: TXMLDocument;
     private
-
+      FNota : TNota;
+      FPrestador: TPrestador;
+      FCliente: TCliente;
+      FItemServico: TItemServico;
+      FServicos  : TServico;
+      XMLDocument1: TXMLDocument;
     public
       procedure MontaArquivoXML;
+      procedure PreencheArquivoXML(const xNota: TNota);
+      procedure CopularTNota(const aJSON: TJSONObject);
   end;
 
 implementation
 
-{ TXMLUtil }
+uses
+  FireDAC.Comp.Client, System.SysUtils;
 
-procedure TXMLUtil.MontaArquivoXML;
+{ TXMLUtil }
 var
   xNfse: IXMLNode;
   xNf: IXMLNode;
@@ -47,6 +56,41 @@ var
   xAliquotaISS: IXMLNode;
   xSituacaoTributaria: IXMLNode;
   xValorTributavel: IXMLNode;
+
+procedure TXMLUtil.CopularTNota(const aJSON: TJSONObject);
+var
+  xMemTableNota: TFDMemTable;
+  xMemTablePrestador: TFDMemTable;
+  xMemTableCliente: TFDMemTable;
+  xMemTableItemServico: TFDMemTable;
+  xMemTableServicos: TFDMemTable;
+begin
+  FNota := nil;
+  FPrestador := nil;
+  FCliente := nil;
+  FItemServico := nil;
+  FServicos := nil;
+
+  xMemTableNota := TFDMemTable.Create(nil);
+
+  try
+    xMemTableNota.LoadFromJSON(aJson);
+
+    while not xMemTableNota.Eof do
+      begin
+        FCliente.Create()
+
+        FNota.Create();
+
+
+        xMemTableNota.Next;
+      end;
+  finally
+    FreeAndNil(xMemTableNota);
+  end;
+end;
+
+procedure TXMLUtil.MontaArquivoXML;
 begin
 
   XMLDocument1.Active := true;
@@ -83,9 +127,38 @@ begin
   xAliquotaISS        := xLista.AddChild('aliquota_item_lista_servico');
   xSituacaoTributaria := xLista.AddChild('situacao_tributaria');
   xValorTributavel    := xLista.AddChild('valor_tributavel');
+end;
+
+procedure TXMLUtil.PreencheArquivoXML(const xNota: TNota);
+var
+  xMemTable :TFDMemtable;
+
+begin
+  xValorTotal.Text         := aJSON.GetValue('valorTotal').ToString;
+  xCnpjPrest.Text          := aJSON.get;
+  xCidadePrestador.Text    := '';
+
+
+  xEnderecoInformado.Text  := '';
+  xTipoPessoa.Text         := '';
+  xCnpjTomador.Text        := '';
+  xIE.Text                 := '';
+  xRazaoSocial.Text        := '';
+  xLogradouro.Text         := '';
+  xEmail.Text              := '';
+  xNumeroResidencia.Text   := '';
+  xComplemento.Text        := '';
+  xBairro.Text             := '';
+  xCidadeTomador.Text      := '';
+  xTributaMunicipio.Text   := '';
+  xCidadePrestacao.Text    := '';
+  xCodServico.Text         := '';
+  xDescricaoServ.Text      := '';
+  xAliquotaISS.Text        := '';
+  xSituacaoTributaria.Text := '';
+  xValorTributavel.Text    := '';
 
   XMLDocument1.SaveToFile('arquivo.xml');
-
 end;
 
 end.
