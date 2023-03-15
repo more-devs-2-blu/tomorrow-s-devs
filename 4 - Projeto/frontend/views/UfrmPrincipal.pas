@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects;
 
 type
-  TForm1 = class(TForm)
+  TfrmPrincipal = class(TForm)
     Label1: TLabel;
     Layout1: TLayout;
     Layout2: TLayout;
@@ -26,35 +26,36 @@ type
     Label4: TLabel;
     Image4: TImage;
     procedure Rectangle1Click(Sender: TObject);
+    procedure Rectangle3Click(Sender: TObject);
   private
     { Private declarations }
-    procedure TelaCriarCopia;
   public
     { Public declarations }
   end;
 
 var
-  Form1: TForm1;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
 uses
-  UfrmCriarCopiar;
+  UfrmCriarCopiar, UfrmAutorizacaoCancelamentoNotas;
 
 {$R *.fmx}
 
-procedure TForm1.Rectangle1Click(Sender: TObject);
+procedure TfrmPrincipal.Rectangle1Click(Sender: TObject);
 begin
-  Self.TelaCriarCopia;
+ // Self.TelaCriarCopia;
 end;
 
-procedure TForm1.TelaCriarCopia;
-begin
-   if not(Assigned(frmCriarCopia)) then
-    frmCriarCopia := TfrmCriarCopia.Create(Application);
 
-  frmCriarCopia.Show;
-  Application.MainForm := frmCriarCopia;
+procedure TfrmPrincipal.Rectangle3Click(Sender: TObject);
+begin
+  if not(Assigned(frmNotas)) then
+    frmNotas := TfrmNotas.Create(Application);
+
+  frmNotas.Show;
+  Application.MainForm := frmNotas;
   Self.Close;
 end;
 

@@ -38,14 +38,15 @@ uses
   UfrmAutorizacaoCancelamentoNotas in 'views\UfrmAutorizacaoCancelamentoNotas.pas' {frmNotas},
   UfrmCriarCopiar in 'views\UfrmCriarCopiar.pas' {frmCriarCopia},
   UfrmDigitacaoNota in 'views\UfrmDigitacaoNota.pas' {frmDigitacaoNota},
-  UfrmPrincipal in 'views\UfrmPrincipal.pas' {Form1},
-  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas';
+  UfrmPrincipal in 'views\UfrmPrincipal.pas' {frmPrincipal},
+  UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
+  VoltarTela in 'frames\VoltarTela.pas' {FraVoltarTela: TFrame};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmNotas, frmNotas);
   Application.CreateForm(TfrmDigitacaoNota, frmDigitacaoNota);
   Application.CreateForm(TForm1, Form1);

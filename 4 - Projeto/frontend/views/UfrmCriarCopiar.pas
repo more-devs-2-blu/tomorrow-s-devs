@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, VoltarTela;
 
 type
   TfrmCriarCopia = class(TForm)
@@ -36,6 +36,7 @@ type
     Image6: TImage;
     Label8: TLabel;
     Image5: TImage;
+    FraVoltarTela1: TFraVoltarTela;
     procedure rect_autorizarClick(Sender: TObject);
     procedure rect_cancelarClick(Sender: TObject);
   private

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Edit, FMX.Objects,
-  FMX.ComboEdit, UEntity.Cliente, Generics.Collections;
+  FMX.ComboEdit, UEntity.Cliente, Generics.Collections, VoltarTela;
 
 type
   TfrmDigitacaoNota = class(TForm)
@@ -38,6 +38,7 @@ type
     Label7: TLabel;
     Image4: TImage;
     ComboEdit1: TComboEdit;
+    FraVoltarTela1: TFraVoltarTela;
     procedure rect_encerrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboEdit1Click(Sender: TObject);
@@ -45,6 +46,7 @@ type
     { Private declarations }
     procedure registrarNota;
     procedure preencherClientes;
+    procedure VoltarTelaPrincipal;
   public
     { Public declarations }
   end;
@@ -136,6 +138,16 @@ begin
   xServicePrestador.Registrar;
   xServiceNota.Registrar;
   ShowMessage('Olhe o Banco');
+end;
+
+procedure TfrmDigitacaoNota.VoltarTelaPrincipal;
+begin
+   if not(Assigned(frmCriarCopia)) then
+    frmCriarCopia := TfrmCriarCopia.Create(Application);
+
+  frmCriarCopia.Show;
+  Application.MainForm := frmCriarCopia;
+  Self.Close;
 end;
 
 end.

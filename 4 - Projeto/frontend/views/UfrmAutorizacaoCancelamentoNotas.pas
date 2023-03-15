@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, UEntity.Nota,
-  UEntity.Servico;
+  UEntity.Servico, VoltarTela;
 
 type
   TfrmNotas = class(TForm)
@@ -25,6 +25,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Image4: TImage;
+    FraVoltarTela1: TFraVoltarTela;
     procedure rect_autorizarClick(Sender: TObject);
   private
     { Private declarations }
