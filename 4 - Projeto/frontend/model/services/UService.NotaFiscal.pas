@@ -167,7 +167,7 @@ begin
 
             if not FileExists('arquivo.xml')then
               begin
-                TXMLUtil.MontaArquivoXML;
+//                TXMLUtil.MontaArquivoXML;
               end;
 
             // Copular XML
