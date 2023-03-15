@@ -59,7 +59,7 @@ begin
   THorse.Group.Prefix('v1')
     .Get('/notasFiscais', TControllerNotaFiscal.Gets)
     .Get('/notaFiscal/:id', TControllerNotaFiscal.Get)
-    .Get('/notaFiscalcompleta/:id', TControllerNotaFiscal.GetCompleto)
+    .Get('/notaFiscalCompleta/:id', TControllerNotaFiscal.GetCompleto)
     .Post('/notaFiscal', TControllerNotaFiscal.Post)
     .Delete('/notaFiscal/:id', TControllerNotaFiscal.Delete);
 

@@ -4,13 +4,14 @@ interface
 
 uses
   Horse,
-  UDAO.Intf;
+  UDAO.Intf, UUtil.Banco;
 
 type
   TControllerBase = class
     protected
-      class var FDAO: IDAO;
+
     public
+      class var FDAO: IDAO;
       class procedure Gets(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
       class procedure Get(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
       class procedure GetCompleto(Req: THorseRequest; Res: THorseResponse; Next: TProc); virtual;
@@ -86,7 +87,7 @@ class procedure TControllerBase.Post(Req: THorseRequest;
   Res: THorseResponse; Next: TProc);
 begin
   if FDAO.AdicionarRegistro(Req.Body<TJSONObject>) then
-    Res.Status(THTTPStatus.Created)
+    Exit
   else
     Res.Status(THTTPStatus.InternalServerError);
 end;

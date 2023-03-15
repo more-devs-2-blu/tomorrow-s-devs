@@ -4,7 +4,7 @@ interface
 
 uses
   Horse,
-  UController.Base;
+  UController.Base, UUtil.Banco, System.JSON;
 
 type
   TControllerNotaFiscal = class (TControllerBase)
@@ -58,6 +58,7 @@ class procedure TControllerNotaFiscal.Post(Req: THorseRequest;
 begin
   FDAO := TDAONotaFiscal.Create;
   inherited;
+  Res.Send<TJSONObject>(TUtilBanco.RetornarUltimoRegistro('nota'));
 end;
 
 end.

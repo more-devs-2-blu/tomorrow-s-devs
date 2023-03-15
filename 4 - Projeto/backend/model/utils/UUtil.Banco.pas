@@ -24,6 +24,7 @@ type
       class function ExecutarConsulta(const aSQL: String): TJSONArray;
       class function AdicionarRegistro(const aTabela: String; const aJSON: String): Boolean;
       class function RemoverRegistro(const aTabela: String; const aIdentificador: Integer): Boolean;
+      class function RetornarUltimoRegistro(const aTabela: String):TJSONObject;
   end;
 
 implementation
@@ -154,6 +155,26 @@ begin
     end;
   finally
     FreeAndNil(xQuery);
+  end;
+end;
+
+class function TUtilBanco.RetornarUltimoRegistro(const aTabela: String): TJSONObject;
+var
+  xQuery: TFDQuery;
+const
+  RETORNAR_ULTIMO_REGISTRO = 'SELECT MAX(ID) AS id FROM %s';
+begin
+  xQuery := TFDQuery.Create(nil);
+  try
+    Self.AbrirConexao;
+    xQuery.Connection := FConexao;
+    xQuery.Open(format(RETORNAR_ULTIMO_REGISTRO, [aTabela]));
+
+    Result := xQuery.ToJSONObject();
+    Self.FecharConexao;
+  except
+    on e: Exception do
+      raise Exception.Create(e.Message);
   end;
 end;
 
