@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.UDAO" Type="System.String" Value="UDAO" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.FrontEnd_TomorrowsDevs" Type="System.String" Value="FrontEnd_TomorrowsDevs" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Nfse" Type="System.String" Value="frames" Category="General" IsBrowsable="False" />
+</TgConfig>

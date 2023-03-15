@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.Edit, FMX.Objects,
-  FMX.ComboEdit, UEntity.Cliente, Generics.Collections, VoltarTela;
+  FMX.ComboEdit, UEntity.Cliente, Generics.Collections, VoltarTela, Nfse;
 
 type
   TfrmDigitacaoNota = class(TForm)

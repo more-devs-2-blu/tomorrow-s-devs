@@ -6,13 +6,13 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, UEntity.Nota,
-  UEntity.Servico, VoltarTela;
+  UEntity.Servico, VoltarTela, Nfse;
 
 type
   TfrmNotas = class(TForm)
     Layout1: TLayout;
     Label1: TLabel;
-    Layout2: TLayout;
+    x: TLayout;
     Layout5: TLayout;
     rect_autorizar: TRectangle;
     Image2: TImage;
@@ -26,6 +26,18 @@ type
     Label3: TLabel;
     Image4: TImage;
     FraVoltarTela1: TFraVoltarTela;
+    CheckBox2: TCheckBox;
+    Frame11: TFrame1;
+    Frame12: TFrame1;
+    CheckBox1: TCheckBox;
+    Frame13: TFrame1;
+    Frame14: TFrame1;
+    CheckBox3: TCheckBox;
+    CheckBox4: TCheckBox;
+    Frame15: TFrame1;
+    CheckBox5: TCheckBox;
+    CheckBox6: TCheckBox;
+    Frame16: TFrame1;
     procedure rect_autorizarClick(Sender: TObject);
   private
     { Private declarations }

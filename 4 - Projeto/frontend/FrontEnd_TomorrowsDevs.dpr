@@ -40,7 +40,8 @@ uses
   UfrmDigitacaoNota in 'views\UfrmDigitacaoNota.pas' {frmDigitacaoNota},
   UfrmPrincipal in 'views\UfrmPrincipal.pas' {frmPrincipal},
   UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
-  VoltarTela in 'frames\VoltarTela.pas' {FraVoltarTela: TFrame};
+  VoltarTela in 'frames\VoltarTela.pas' {FraVoltarTela: TFrame},
+  Nfse in 'frames\Nfse.pas' {Frame1: TFrame};
 
 {$R *.res}
 
