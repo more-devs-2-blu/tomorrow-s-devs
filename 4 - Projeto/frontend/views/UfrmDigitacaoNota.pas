@@ -40,12 +40,11 @@ type
     ComboEdit1: TComboEdit;
     procedure rect_encerrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure rect_excluirClick(Sender: TObject);
+    procedure ComboEdit1Click(Sender: TObject);
   private
     { Private declarations }
     procedure registrarNota;
     procedure preencherClientes;
-    function ListarClientes : TList<TCliente>;
   public
     { Public declarations }
   end;
@@ -63,12 +62,7 @@ uses
 {$R *.fmx}
 
 
-procedure TfrmDigitacaoNota.FormCreate(Sender: TObject);
-begin
-  Self.preencherClientes;
-end;
-
-function TfrmDigitacaoNota.ListarClientes: TList<TCliente>;
+procedure TfrmDigitacaoNota.ComboEdit1Click(Sender: TObject);
 var
   xClientes : TList<TCliente>;
   xServiceItemServico: IService;
@@ -82,16 +76,29 @@ begin
   begin
     xClientes.Add(xItemServico.Nota.Cliente);
   end;
-  Result := xClientes;
+  Edit2.Text := xClientes[ComboEdit1.ItemIndex].CNPJ;
+end;
+
+procedure TfrmDigitacaoNota.FormCreate(Sender: TObject);
+begin
+  Self.preencherClientes;
 end;
 
 procedure TfrmDigitacaoNota.preencherClientes;
 var
   xClientes : TList<TCliente>;
+  xServiceItemServico: IService;
+  xItemServico : TItemServico;
   I : Integer;
 begin
   xClientes := TList<TCliente>.Create;
-  xClientes := ListarClientes;
+
+  xServiceItemServico := TServiceItemServico.Create;
+  xServiceItemServico.Listar;
+  for xItemServico in TServiceItemServico(xServiceItemServico).ItemServicos do
+  begin
+    xClientes.Add(xItemServico.Nota.Cliente);
+  end;
 
   for I := 0 to xClientes.Count-1 do
     ComboEdit1.Items.Add(xClientes[I].NomeFantasia);
@@ -104,14 +111,6 @@ begin
   Self.registrarNota;
 end;
 
-procedure TfrmDigitacaoNota.rect_excluirClick(Sender: TObject);
-var
-  xClientes : TList<TCliente>;
-begin
-  xClientes := TList<TCliente>.Create;
-  xClientes := ListarClientes;
-  Edit2.Text := xClientes[ComboEdit1.ItemIndex].NomeFantasia;
-end;
 
 procedure TfrmDigitacaoNota.RegistrarNota;
 var

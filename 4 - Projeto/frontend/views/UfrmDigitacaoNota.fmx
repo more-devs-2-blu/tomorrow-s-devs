@@ -373,6 +373,7 @@ object frmDigitacaoNota: TfrmDigitacaoNota
         Size.Width = 257.000000000000000000
         Size.Height = 22.000000000000000000
         Size.PlatformDefault = False
+        OnClick = ComboEdit1Click
       end
     end
   end
@@ -897,7 +898,6 @@ object frmDigitacaoNota: TfrmDigitacaoNota
       Stroke.Kind = None
       XRadius = 14.500000000000000000
       YRadius = 14.500000000000000000
-      OnClick = rect_excluirClick
       object Image3: TImage
         MultiResBitmap.Height = 500
         MultiResBitmap.Width = 500
