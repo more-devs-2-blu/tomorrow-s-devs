@@ -133,7 +133,7 @@ end;
 
 procedure TServiceItemServico.PreencherItemServicos(const aJsonServicos
   : String);
-  var
+var
  xMemTable: TFDMemTable;
   xServico: TServico;
   xNota : TNota;
@@ -170,13 +170,11 @@ end;
 
 procedure TServiceItemServico.CarregarCliente(const aJsonCliente: String;
   var aCliente: TCliente);
-  var
+var
   xMemTable: TFDMemTable;
-  xMemTableTeam: TFDMemTable;
 begin
   aCliente        := nil;
   xMemTable     := TFDMemTable.Create(nil);
-  xMemTableTeam := TFDMemTable.Create(nil);
 
   try
     xMemTable.LoadFromJSON(aJsonCliente);
@@ -201,7 +199,6 @@ begin
     end;
   finally
     FreeAndNil(xMemTable);
-    FreeAndNil(xMemTableTeam);
   end;
 end;
 
@@ -209,13 +206,11 @@ procedure TServiceItemServico.CarregarNota(const aJsonNota: String;
   var aNota: TNota);
 var
   xMemTable: TFDMemTable;
-  xMemTableTeam: TFDMemTable;
   xPrestador : TPrestador;
   xCliente : TCliente;
 begin
   aNota        := nil;
   xMemTable     := TFDMemTable.Create(nil);
-  xMemTableTeam := TFDMemTable.Create(nil);
 
   try
     xMemTable.LoadFromJSON(aJsonNota);
@@ -240,7 +235,6 @@ begin
     end;
   finally
     FreeAndNil(xMemTable);
-    FreeAndNil(xMemTableTeam);
   end;
 end;
 
@@ -273,12 +267,10 @@ end;
 procedure TServiceItemServico.CarregarServicos(const aJsonServico: String; var aServico : TServico);
 var
   xMemTable: TFDMemTable;
-  xMemTableTeam: TFDMemTable;
   xStatus: Byte;
 begin
   aServico        := nil;
   xMemTable     := TFDMemTable.Create(nil);
-  xMemTableTeam := TFDMemTable.Create(nil);
 
   try
     xMemTable.LoadFromJSON(aJsonServico);
@@ -297,7 +289,6 @@ begin
     end;
   finally
     FreeAndNil(xMemTable);
-    FreeAndNil(xMemTableTeam);
   end;
 end;
 
