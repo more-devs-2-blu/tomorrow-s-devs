@@ -11,16 +11,16 @@
 ## Tecnologias Utilizadas
 
 <p align="left">
- <img src="https://cdn-icons-png.flaticon.com/512/5968/5968252.png" alt="delphi" width="80" height="80"/>
- <img src="https://upload.wikimedia.org/wikipedia/en/c/cb/FireMonkeyLogo.svg" alt="firemonkey" width="80" height="80"/>
- <img src="https://avatars.githubusercontent.com/u/32908721?s=280&v=4" alt="hashload" width="80" height="80"/>
- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="80" height="80"/>
- <img src="https://www.svgrepo.com/download/354202/postman-icon.svg" alt="postman" width="80 height="80"/> 
- <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="80" height="80"/>
- <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/3b/cc/0c/3bcc0cb0-e973-2aff-27ee-ec93ed761232/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp" alt="trello" width="80" height="80"/>
- <img src="https://s3.amazonaws.com/s3.roaringapps.com/assets/icons/1561251841927-Insomnia.png" alt="insomnia" width="80" height="80">
- <img src="https://app.brmodeloweb.com/5cceb53251d6e9827b44.svg" alt="BR Modelo Web logo" height="80" width="80">
- <img src="https://store-images.s-microsoft.com/image/apps.1409.13851527096222888.2b60149a-04a5-4578-a6b2-d7b7377332d5.c22d8e97-4d44-4304-9bd2-55f9d29c0f82?w=120" height="80" width="80" alt="Logo Draw.io">
+ <img src="https://cdn-icons-png.flaticon.com/512/5968/5968252.png" alt="delphi" width="70" height="70"/>
+ <img src="https://upload.wikimedia.org/wikipedia/en/c/cb/FireMonkeyLogo.svg" alt="firemonkey" width="70" height="70"/>
+ <img src="https://avatars.githubusercontent.com/u/32908721?s=280&v=4" alt="hashload" width="70" height="70"/>
+ <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="70" height="70"/>
+ <img src="https://www.svgrepo.com/download/354202/postman-icon.svg" alt="postman" width="70" height="70"/> 
+ <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="70" height="70"/>
+ <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/3b/cc/0c/3bcc0cb0-e973-2aff-27ee-ec93ed761232/AppIcon-1x_U007emarketing-0-7-0-85-220.png/230x0w.webp" alt="trello" width="70" height="70"/>
+ <img src="https://s3.amazonaws.com/s3.roaringapps.com/assets/icons/1561251841927-Insomnia.png" alt="insomnia" width="70" height="70">
+ <img src="https://app.brmodeloweb.com/5cceb53251d6e9827b44.svg" alt="BR Modelo Web logo" height="70" width="70">
+ <img src="https://store-images.s-microsoft.com/image/apps.1409.13851527096222888.2b60149a-04a5-4578-a6b2-d7b7377332d5.c22d8e97-4d44-4304-9bd2-55f9d29c0f82?w=120" height="70" width="70" alt="Logo Draw.io">
 </p> 
 
 
