@@ -130,7 +130,7 @@ begin
     FreeAndNil(xMemTableCliente);
   end;
 
-  xJSONArrayAux := TJSONArray.Create(aJSON.GetValue('Servicos')); 
+  xJSONArrayAux := TJSONArray.Create(aJSON.GetValue('Servicos'));
   xJSONObjectAux := TJSONObject.ParseJSONValue
         (TEncoding.ASCII.GetBytes(xJSONArrayAux[0].ToJSON), 0) as TJSONObject;
 

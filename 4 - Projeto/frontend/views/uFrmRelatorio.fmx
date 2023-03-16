@@ -1,0 +1,138 @@
+object FrmRelatorio: TFrmRelatorio
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 661
+  ClientWidth = 326
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Chart1: TChart
+    Foot.Font.StyleExt = {00040000000200000004000000}
+    Legend.Title.Font.StyleExt = {00070000000000000004000000}
+    SubFoot.Font.StyleExt = {00040000000200000004000000}
+    SubTitle.VertMargin = 0
+    Title.ClipText = False
+    Title.Text.Strings = (
+      't')
+    Title.TextAlignment = taLeftJustify
+    Title.Transparency = 100
+    Title.VertMargin = 24
+    Pages.AutoScale = True
+    View3DWalls = False
+    Zoom.Brush.Kind = None
+    Zoom.Pen.Fill.Color = claSilver
+    Align = Client
+    BevelOuter = bvNone
+    TabOrder = 4
+    Size.Width = 326.000000000000000000
+    Size.Height = 661.000000000000000000
+    Size.PlatformDefault = False
+    ColorPaletteIndex = 13
+    object Label1: TLabel
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 24.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Text = 'De:'
+      TabOrder = 1
+    end
+    object Label2: TLabel
+      StyledSettings = [Family, Size, FontColor]
+      Position.X = 20.000000000000000000
+      Position.Y = 44.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Text = 'At'#233':'
+      TabOrder = 0
+    end
+    object cmbTipoFiltros: TComboBox
+      Items.Strings = (
+        'Servi'#231'o Mais Faturado'
+        'Servi'#231'o Menos Faturado'
+        'Qtd Notas Canceladas'
+        'Qtd Notas Autorizadas')
+      Position.X = 168.000000000000000000
+      Position.Y = 12.000000000000000000
+      Size.Width = 153.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+    end
+    object dtDE: TDateEdit
+      Date = 45000.000000000000000000
+      Position.X = 48.000000000000000000
+      Position.Y = 12.000000000000000000
+      TabOrder = 4
+    end
+    object dtATE: TDateEdit
+      Date = 45000.000000000000000000
+      Position.X = 48.000000000000000000
+      Position.Y = 39.000000000000000000
+      TabOrder = 3
+    end
+  end
+  object btnCarregarDados: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 616.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Carregar Dados'
+    OnClick = btnCarregarDadosClick
+  end
+  object dseRelatorioServico: TDataSource
+    DataSet = qryRelatorioServico
+    Left = 674
+    Top = 295
+  end
+  object qryRelatorioNota: TFDQuery
+    Connection = tfdConectDataBase
+    Transaction = fdConect
+    SQL.Strings = (
+      
+        'SELECT COUNT(ID_PESSOA) AS TOTAL_NOTAS, PES_DTNASCIMENTO FROM PE' +
+        'SSOA_CADASTRO'
+      'WHERE PES_DTNASCIMENTO BETWEEN '#39'20000105'#39' AND '#39'20001215'#39
+      'GROUP BY PES_DTNASCIMENTO')
+    Left = 672
+    Top = 127
+  end
+  object fdConect: TFDTransaction
+    Options.ReadOnly = True
+    Connection = tfdConectDataBase
+    Left = 673
+    Top = 72
+  end
+  object tfdConectDataBase: TFDConnection
+    Params.Strings = (
+      'Server=TIGO-PC\SQLEXPRESS'
+      'Database=TOMORROWS_DB'
+      'User_Name=sa'
+      'Password=mfn869618'
+      'DriverID=MSSQL')
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate, uvUpdateChngFields, uvUpdateMode]
+    TxOptions.ReadOnly = True
+    LoginPrompt = False
+    Transaction = fdConect
+    Left = 672
+    Top = 16
+  end
+  object qryRelatorioServico: TFDQuery
+    Connection = tfdConectDataBase
+    Left = 672
+    Top = 240
+  end
+  object DataSource1: TDataSource
+    DataSet = qryRelatorioNota
+    Left = 674
+    Top = 191
+  end
+end

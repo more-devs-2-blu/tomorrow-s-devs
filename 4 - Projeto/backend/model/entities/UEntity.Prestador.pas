@@ -60,7 +60,7 @@ end;
 
 destructor TPrestador.Destroy;
 begin
-  FreeAndNil(JSON);
+  FreeAndNil(FJSON);
   inherited;
 end;
 

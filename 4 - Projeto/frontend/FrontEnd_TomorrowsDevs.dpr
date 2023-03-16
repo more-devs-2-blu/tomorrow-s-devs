@@ -1,5 +1,7 @@
 program FrontEnd_TomorrowsDevs;
 
+
+
 uses
   System.StartUpCopy,
   FMX.Forms,
@@ -41,9 +43,13 @@ uses
   UfrmPrincipal in 'views\UfrmPrincipal.pas' {frmPrincipal},
   UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
   VoltarTela in 'frames\VoltarTela.pas' {FraVoltarTela: TFrame},
+<<<<<<< Updated upstream
   Nfse in 'frames\Nfse.pas' {Frame1: TFrame},
   Servico in 'frames\Servico.pas' {FraServico: TFrame},
   UfrmAutorizacaoCancelamentoNotas in 'views\UfrmAutorizacaoCancelamentoNotas.pas' {frmservicos};
+=======
+  uFrmRelatorio in 'views\uFrmRelatorio.pas' {FrmRelatorio};
+>>>>>>> Stashed changes
 
 {$R *.res}
 
@@ -53,6 +59,10 @@ begin
   Application.CreateForm(TfrmNotas, frmNotas);
   Application.CreateForm(TfrmDigitacaoNota, frmDigitacaoNota);
   Application.CreateForm(TfrmCriarCopia, frmCriarCopia);
+<<<<<<< Updated upstream
   Application.CreateForm(Tfrmservicos, frmservicos);
+=======
+  Application.CreateForm(TFrmRelatorio, FrmRelatorio);
+>>>>>>> Stashed changes
   Application.Run;
 end.

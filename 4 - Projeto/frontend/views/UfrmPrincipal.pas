@@ -27,6 +27,7 @@ type
     Image4: TImage;
     procedure Rectangle1Click(Sender: TObject);
     procedure Rectangle3Click(Sender: TObject);
+    procedure Rectangle2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,7 +40,11 @@ var
 implementation
 
 uses
+<<<<<<< Updated upstream
   UfrmCriarCopiar, UfrmAutorizacaoCancelamentoNotas, UfrmAdicionarServico;
+=======
+  UfrmCriarCopiar, UfrmAutorizacaoCancelamentoNotas, uFrmRelatorio;
+>>>>>>> Stashed changes
 
 {$R *.fmx}
 
@@ -53,6 +58,16 @@ begin
   Self.Close;
 end;
 
+
+procedure TfrmPrincipal.Rectangle2Click(Sender: TObject);
+begin
+    if not(Assigned(FrmRelatorio)) then
+    FrmRelatorio := TFrmRelatorio.Create(Application);
+
+  FrmRelatorio.Show;
+  Application.MainForm := FrmRelatorio;
+  Self.Close;
+end;
 
 procedure TfrmPrincipal.Rectangle3Click(Sender: TObject);
 begin
