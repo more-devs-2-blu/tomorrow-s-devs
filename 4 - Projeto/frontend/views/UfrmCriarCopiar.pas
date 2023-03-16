@@ -53,7 +53,7 @@ var
 implementation
 
 uses
-  UfrmDigitacaoNota, UfrmAutorizacaoCancelamentoNotas;
+  UfrmDigitacaoNota, UfrmAutorizacaoCancelamentoNotas, UfrmAdicionarServico;
 
 {$R *.fmx}
 

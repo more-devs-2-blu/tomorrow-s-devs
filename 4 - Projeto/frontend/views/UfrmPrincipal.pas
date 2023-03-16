@@ -39,7 +39,7 @@ var
 implementation
 
 uses
-  UfrmCriarCopiar, UfrmAutorizacaoCancelamentoNotas;
+  UfrmCriarCopiar, UfrmAutorizacaoCancelamentoNotas, UfrmAdicionarServico;
 
 {$R *.fmx}
 

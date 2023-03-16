@@ -35,13 +35,15 @@ uses
   UEntity.Servico in '..\backend\model\entities\UEntity.Servico.pas',
   UEntity.Cliente in '..\backend\model\entities\UEntity.Cliente.pas',
   UEntity.Prestador in '..\backend\model\entities\UEntity.Prestador.pas',
-  UfrmAutorizacaoCancelamentoNotas in 'views\UfrmAutorizacaoCancelamentoNotas.pas' {frmNotas},
+  UfrmAdicionarServico in 'views\UfrmAdicionarServico.pas' {frmNotas},
   UfrmCriarCopiar in 'views\UfrmCriarCopiar.pas' {frmCriarCopia},
   UfrmDigitacaoNota in 'views\UfrmDigitacaoNota.pas' {frmDigitacaoNota},
   UfrmPrincipal in 'views\UfrmPrincipal.pas' {frmPrincipal},
   UUtils.XML in '..\backend\model\utils\UUtils.XML.pas',
   VoltarTela in 'frames\VoltarTela.pas' {FraVoltarTela: TFrame},
-  Nfse in 'frames\Nfse.pas' {Frame1: TFrame};
+  Nfse in 'frames\Nfse.pas' {Frame1: TFrame},
+  Servico in 'frames\Servico.pas' {FraServico: TFrame},
+  UfrmAutorizacaoCancelamentoNotas in 'views\UfrmAutorizacaoCancelamentoNotas.pas' {frmservicos};
 
 {$R *.res}
 
@@ -51,5 +53,6 @@ begin
   Application.CreateForm(TfrmNotas, frmNotas);
   Application.CreateForm(TfrmDigitacaoNota, frmDigitacaoNota);
   Application.CreateForm(TfrmCriarCopia, frmCriarCopia);
+  Application.CreateForm(Tfrmservicos, frmservicos);
   Application.Run;
 end.

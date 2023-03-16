@@ -42,7 +42,7 @@ type
     procedure rect_encerrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ComboEdit1Click(Sender: TObject);
-  private
+ private
     { Private declarations }
     procedure registrarNota;
     procedure preencherClientes;
